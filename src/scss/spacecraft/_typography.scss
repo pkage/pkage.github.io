@@ -1,0 +1,19 @@
+h1, h2, h3, h4, h5 {
+	font-family: $title-font;
+	font-weight: $title-weight;
+	color: $secondary-color;
+	text-transform: lowercase;
+}
+
+ul {
+	list-style: circle inside;
+	> li {
+		display: list-item;
+	}
+}
+
+html {
+	font-family: $text-font;
+}
+
+

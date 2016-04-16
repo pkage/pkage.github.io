@@ -1,0 +1,17 @@
+@mixin media-md {
+	@media (min-width: $device-md) {
+		@content;
+	}
+}
+
+@mixin media-lg {
+	@media (min-width: $device-lg) {
+		@content;
+	}
+}
+
+@mixin media-xl {
+	@media (min-width: $device-xl) {
+		@content;
+	}
+}

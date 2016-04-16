@@ -1,0 +1,86 @@
+@import "spacecraft/main.scss";
+@import url(https://fonts.googleapis.com/css?family=Lato:100italic);
+
+.center-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-image: url(/bg.jpg);
+	background-size: cover;
+	transition: background-color .25s;
+}
+
+@keyframes fade-down {
+	0% {
+		transform: translate(0, -100px);
+		opacity: 0;
+	}
+	100% {
+		transform: none;
+		opacity: 1;
+	}
+}
+@keyframes fade-up {
+	0% {
+		transform: translate(0, 50px);
+		opacity: 0;
+	}
+	100% {
+		transform: none;
+		opacity: 1;
+	}
+}
+
+.name {
+	font-size: 8em;
+	text-transform: uppercase;
+	font-weight: 100;
+	font-style: italic;
+	font-family: 'Lato', sans-serif;
+	color: white;
+	animation-name: fade-down;
+	animation-duration: 2s;
+	margin-bottom: 10px;
+}
+
+.link-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.link {
+	color: white;
+	background-color: rgba(0,0,0,0);
+	padding: 10px;
+	border-radius: 50% 50% 50% 50%;
+	opacity: 0;
+	text-decoration: none;
+	width: 3em;
+	height: 3em;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	transition: background-color .25s, color .25s;
+	animation-name: fade-up;
+	animation-duration: 1s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+	margin-left: 1em;
+	margin-right: 1em;
+
+	@for $i from 1 to 5 {
+		&:nth-child(#{$i}) {
+			animation-delay: #{1 + (.4 * $i)}s;
+		}
+	}
+
+	&:hover {
+		background-color: white;
+		color: black;
+	}
+}

@@ -1,0 +1,22 @@
+// COLOR CONFIGURATION
+$primary-color: #BE2E3D;
+$secondary-color: #86857A;
+$tertiary-color: #000000;
+
+// TYPOGRAPHY SETTINGS
+$title-font: 'Roboto', sans-serif;
+$title-weight: 200;
+$text-font: 'Roboto', sans-serif;
+
+// MOBILE BREAKPOINTS (shamelessly stolen from twbs/bootstrap)
+$device-sm: 544px;
+$device-md: 768px;
+$device-lg: 992px;
+$device-xl: 1200px;
+
+// GRID SETTINGS
+$column-max: 12;
+$column-margin: 10px;
+
+// UTILITY SETTINGS
+$max-margin-helpers: 5;

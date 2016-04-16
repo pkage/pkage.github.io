@@ -1,0 +1,28 @@
+.jumbotron {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	justify-content: flex-end;
+	height: 100vh;
+	padding-right: 1em; 
+	
+	> * {
+		margin-bottom: 0;
+		margin-top: 0;
+		font-weight: 400;
+		word-wrap: break-word;
+	}
+	> h1 {
+		font-size: 8em;
+		color: $primary-color;
+	}
+	> h2 {
+		font-size: 2em;
+		color: $secondary-color;
+	}
+	> *:last-child {
+		margin-bottom: 2rem;
+	}
+}
+
+
