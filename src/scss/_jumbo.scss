@@ -13,9 +13,14 @@
 	> h1 {
 		font-weight: 100;
 		font-size: 3em;
-		margin-bottom: 1rem;
+		margin: 0;
+	}
+	> h2 {
+		font-weight: 100;
+		margin: 0;
 	}
 	> .buttons {
+		margin-top: 1rem;
 		display: flex;
 		flex-direction: row;
 		align-items: center;

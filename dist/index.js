@@ -23,7 +23,7 @@ var WorldDriver = function () {
 		});
 
 		// educated guess about on mobile or not based on landscape/portrait
-		this.max_body_count = this.height > this.width ? 50 : 200;
+		this.max_body_count = this.height > this.width ? 50 : 150;
 		this.initialize_bounds();
 		this.mouse_constraint = Matter.MouseConstraint.create(this.engine, {
 			element: this.render.canvas
@@ -36,10 +36,20 @@ var WorldDriver = function () {
 		if (this.height > this.width) {
 			window.addEventListener('deviceorientation', $.proxy(this.update_gravity, this));
 		}
+
+		setTimeout(this.show_hint, 5000);
 		this.run_simulation();
 	}
 
 	_createClass(WorldDriver, [{
+		key: 'show_hint',
+		value: function show_hint() {
+			$('#hint').slideDown();
+			setTimeout(function () {
+				$('#hint').slideUp();
+			}, 3500);
+		}
+	}, {
 		key: 'create_vector',
 		value: function create_vector(multx, multy, negative) {
 			multx = multx === undefined ? 1 : multx;
