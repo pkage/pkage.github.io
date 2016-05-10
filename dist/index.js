@@ -32,6 +32,10 @@ var WorldDriver = function () {
 		this.render.mouse = this.mouse_constraint.mouse;
 
 		$('window').resize($.proxy(this.on_window_resize, this));
+
+		if (this.height > this.width) {
+			window.addEventListener('deviceorientation', $.proxy(this.update_gravity, this));
+		}
 		this.run_simulation();
 	}
 
@@ -89,6 +93,25 @@ var WorldDriver = function () {
 			Matter.World.add(this.engine.world, [box]);
 			if (this.engine.world.bodies.length < this.max_body_count) {
 				setTimeout($.proxy(this.create_projectile, this), 250);
+			}
+		}
+	}, {
+		key: 'update_gravity',
+		value: function update_gravity(event) {
+			var orientation = window.orientation,
+			    gravity = this.engine.world.gravity;
+			if (orientation === 0) {
+				gravity.x = Matter.Common.clamp(event.gamma, -90, 90) / 90;
+				gravity.y = Matter.Common.clamp(event.beta, -90, 90) / 90;
+			} else if (orientation === 180) {
+				gravity.x = Matter.Common.clamp(event.gamma, -90, 90) / 90;
+				gravity.y = Matter.Common.clamp(-event.beta, -90, 90) / 90;
+			} else if (orientation === 90) {
+				gravity.x = Matter.Common.clamp(event.beta, -90, 90) / 90;
+				gravity.y = Matter.Common.clamp(-event.gamma, -90, 90) / 90;
+			} else if (orientation === -90) {
+				gravity.x = Matter.Common.clamp(-event.beta, -90, 90) / 90;
+				gravity.y = Matter.Common.clamp(event.gamma, -90, 90) / 90;
 			}
 		}
 	}, {
