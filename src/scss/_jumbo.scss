@@ -1,0 +1,44 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100);
+.jumbo {
+	color: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-transform: uppercase;
+	font-family: 'Roboto', sans-serif;
+	> * {
+		pointer-events: initial;
+	}
+	> h1 {
+		font-weight: 100;
+		font-size: 3em;
+		margin-bottom: 1rem;
+	}
+	> .buttons {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		> a {
+			text-decoration: none;
+			color: #2980b9;
+			transition: color .2s;
+			&:hover {
+				color: #3498db;
+			}
+			&::after {
+				content: "\2219";
+				margin: 0 .5rem 0 .5rem;
+				pointer-events: none;
+				color: white;
+				cursor: initial;
+			}
+			&:last-of-type {
+				&::after {
+					display: none !important;
+				}
+			}
+		}
+	}
+}

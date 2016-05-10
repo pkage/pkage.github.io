@@ -7,10 +7,14 @@
     "gulp": "^3.9.1"
   },
   "devDependencies": {
+    "babel-preset-es2015-without-strict": "0.0.2",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
+    "gulp-babel": "^6.1.2",
+    "gulp-clean": "^0.3.2",
     "gulp-clean-css": "^2.0.6",
     "gulp-concat": "^2.6.0",
+    "gulp-copy": "0.0.2",
     "gulp-dedupe": "0.0.2",
     "gulp-jshint": "^2.0.0",
     "gulp-rename": "^1.2.2",
