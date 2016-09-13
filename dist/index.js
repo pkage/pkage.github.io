@@ -140,6 +140,16 @@ var WorldDriver = function () {
 			this.render.options.width = this.width;
 			this.initialize_bounds();
 		}
+	}, {
+		key: 'disable_jumbo',
+		value: function disable_jumbo() {
+			$('.fg').addClass('nonreactive');
+		}
+	}, {
+		key: 'enable_jumbo',
+		value: function enable_jumbo() {
+			$('.fg').removeClass('nonreactive');
+		}
 	}]);
 
 	return WorldDriver;

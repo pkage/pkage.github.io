@@ -440,6 +440,9 @@ textarea {
       .jumbo > .buttons > a:last-of-type::after {
         display: none !important; }
 
+.nonreactive {
+  pointer-events: none !important; }
+
 body {
   background-color: #222222;
   overflow: hidden; }

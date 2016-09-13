@@ -125,6 +125,13 @@ class WorldDriver {
 		this.render.options.width = this.width;
 		this.initialize_bounds();
 	}
+
+	disable_jumbo() {
+		$('.fg').addClass('nonreactive');
+	}
+	enable_jumbo() {
+		$('.fg').removeClass('nonreactive');
+	}
 }
 
 var wd = new WorldDriver();

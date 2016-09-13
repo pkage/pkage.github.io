@@ -25,43 +25,45 @@ var babelopts = {
 // lint task
 gulp.task('lint', function() {
 	return gulp.src('src/js/*.js')
-				 .pipe(babel(babelopts))
-				 .pipe(jshint())
-				 .pipe(jshint.reporter('default'));
+		.pipe(babel(babelopts))
+		.pipe(jshint())
+		.pipe(jshint.reporter('default'));
 });
 
 
 // compile scss
 gulp.task('scss', function() {
 	return gulp.src('src/scss/main.scss')
-				.pipe(sass())
-				.on('error', gutil.log)
-				.pipe(autoprefixer())
-				.on('error', gutil.log)
-				.pipe(rename('index.css'))
-				.pipe(gulp.dest('dist/'))
-				.pipe(dedupe())
-				.pipe(cleancss())
-				.pipe(rename('index.min.css'))
-				.pipe(gulp.dest('dist/'));
+		.pipe(sass())
+		.on('error', gutil.log)
+		.pipe(autoprefixer())
+		.on('error', gutil.log)
+		.pipe(rename('index.css'))
+		.pipe(gulp.dest('dist/'))
+		.pipe(dedupe())
+		.pipe(cleancss())
+		.pipe(rename('index.min.css'))
+		.pipe(gulp.dest('dist/'));
 });
 
 // compile js
 gulp.task('scripts', function() {
 	return gulp.src('src/js/*.js')
-				.pipe(concat('index.js'))
-				 .pipe(babel(babelopts))
-				.on('error', gutil.log)
-				.pipe(gulp.dest('dist/'))
-				.pipe(rename('index.min.js'))
-				.pipe(uglify())
-				.on('error', gutil.log)
-				.pipe(gulp.dest('dist/'));
+		.pipe(concat('index.js'))
+		.pipe(babel(babelopts))
+		.on('error', gutil.log)
+		.pipe(gulp.dest('dist/'))
+		.pipe(rename('index.min.js'))
+		.pipe(uglify())
+		.on('error', gutil.log)
+		.pipe(gulp.dest('dist/'));
 });
 
 gulp.task('copylibs', function() {
 	return gulp.src('src/lib/*')
-				.pipe(copy('dist/', {prefix: 2}));
+		.pipe(copy('dist/', {
+			prefix: 2
+		}));
 });
 
 // clean task
