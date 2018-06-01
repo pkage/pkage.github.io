@@ -378,20 +378,16 @@ textarea {
 .jumbo {
   color: white;
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
-  -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
   text-transform: uppercase;
@@ -408,26 +404,27 @@ textarea {
   .jumbo > .buttons {
     margin-top: 1rem;
     display: -webkit-box;
-    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
-    -webkit-flex-direction: row;
         -ms-flex-direction: row;
             flex-direction: row;
     -webkit-box-align: center;
-    -webkit-align-items: center;
         -ms-flex-align: center;
             align-items: center;
     -webkit-box-pack: center;
-    -webkit-justify-content: center;
         -ms-flex-pack: center;
             justify-content: center; }
+    @media (max-width: 768px) {
+      .jumbo > .buttons {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column; } }
     .jumbo > .buttons > a {
       text-decoration: none;
       color: #2980b9;
-      -webkit-transition: color .2s;
       transition: color .2s; }
       .jumbo > .buttons > a:hover {
         color: #3498db; }
@@ -437,6 +434,14 @@ textarea {
         pointer-events: none;
         color: white;
         cursor: initial; }
+      @media (max-width: 768px) {
+        .jumbo > .buttons > a {
+          -webkit-box-orient: vertical;
+          -webkit-box-direction: normal;
+              -ms-flex-direction: column;
+                  flex-direction: column; }
+          .jumbo > .buttons > a::after {
+            display: none !important; } }
       .jumbo > .buttons > a:last-of-type::after {
         display: none !important; }
 
