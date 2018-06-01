@@ -22,6 +22,9 @@
 	> .buttons {
 		margin-top: 1rem;
 		display: flex;
+		@media (max-width: 768px) {
+			flex-direction: column;
+		}
 		flex-direction: row;
 		align-items: center;
 		justify-content: center;
@@ -38,6 +41,12 @@
 				pointer-events: none;
 				color: white;
 				cursor: initial;
+			}
+			@media (max-width: 768px) {
+				flex-direction: column;
+				&::after {
+					display: none !important;
+				}
 			}
 			&:last-of-type {
 				&::after {
