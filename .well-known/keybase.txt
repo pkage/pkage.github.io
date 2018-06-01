@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/pkage
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://kagelabs.org
+  * I am pkage (https://keybase.io/pkage) on keybase.
+  * I have a public key ASC4N1UM-DMPrlpjIHzuCcGqmKjLlyVkavzg3mj3ecqQoAo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120b837550cf8330fae5a63207cee09c1aa98a8cb9725646afce0de68f779ca90a00a",
+      "host": "keybase.io",
+      "kid": "0120b837550cf8330fae5a63207cee09c1aa98a8cb9725646afce0de68f779ca90a00a",
+      "uid": "0a59e4bd25d3e02e70de3a17e8e76f19",
+      "username": "pkage"
+    },
+    "merkle_root": {
+      "ctime": 1527843905,
+      "hash": "5a372391a683ccc57e6116e2424ec19d262a3bfd087ef6fe241ba550c16e4bce39a22121008117eec9c8e16b4be9687e2085ee725f87b9dd8415bc0bb104a5ed",
+      "hash_meta": "d12e7364cc164366b0e0a0795e7766907b2a880797c8430d77d7e7f6698e9f3e",
+      "seqno": 2974640
+    },
+    "service": {
+      "entropy": "GXAPjV4nsB0NdsH/rcuGpicE",
+      "hostname": "kagelabs.org",
+      "protocol": "http:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "1.0.48"
+  },
+  "ctime": 1527843919,
+  "expire_in": 504576000,
+  "prev": "0487ebc411673879bea06d233dda265b4cb8343d4b48afdc94d000324d6d0f8d",
+  "seqno": 11,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEguDdVDPgzD65aYyB87gnBqpioy5clZGr84N5o93nKkKAKp3BheWxvYWTESpcCC8QgBIfrxBFnOHm+oG0jPdomW0y4ND1LSK/clNAAMk1tD43EID022xAhlqTCiwJWJlYLeWfu0v01XIZ12tgq4oP7pzVJAgHCo3NpZ8RAlojpGCnsrAihL0mY6CVuG1a9mq8HzfFfeuGk4u8Hptri2u+5yufA7RL1s5DaZjjhSP5CdYc9KYnfsaMXRJ+8BKhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEINBASqaScXyF1ZioDCae9nX3Y0xAG7vE6fC6FFIElDKOo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/pkage
+
+==================================================================
