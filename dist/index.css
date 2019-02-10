@@ -375,21 +375,39 @@ textarea {
 .fg {
   pointer-events: none; }
 
+.button {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  font-size: 0.6em;
+  color: white;
+  opacity: 0.05;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  transition: opacity 0.1s cubic-bezier(0, 0, 0.3, 1);
+  animation: flash 0.5s cubic-bezier(0, 0, 0.3, 1) 0.25s 4 alternate; }
+  .button:hover {
+    opacity: 0.2; }
+
+@keyframes flash {
+  from {
+    opacity: 0.05; }
+  to {
+    opacity: 0.2; } }
+
 .jumbo {
   color: white;
-  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
   text-transform: uppercase;
   font-family: 'Roboto', sans-serif; }
   .jumbo > * {
@@ -403,25 +421,18 @@ textarea {
     margin: 0; }
   .jumbo > .buttons {
     margin-top: 1rem;
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center; }
+    -ms-flex-direction: row;
+        flex-direction: row;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center; }
     @media (max-width: 768px) {
       .jumbo > .buttons {
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-            -ms-flex-direction: column;
-                flex-direction: column; } }
+        -ms-flex-direction: column;
+            flex-direction: column; } }
     .jumbo > .buttons > a {
       text-decoration: none;
       color: #2980b9;
@@ -436,10 +447,8 @@ textarea {
         cursor: initial; }
       @media (max-width: 768px) {
         .jumbo > .buttons > a {
-          -webkit-box-orient: vertical;
-          -webkit-box-direction: normal;
-              -ms-flex-direction: column;
-                  flex-direction: column; }
+          -ms-flex-direction: column;
+              flex-direction: column; }
           .jumbo > .buttons > a::after {
             display: none !important; } }
       .jumbo > .buttons > a:last-of-type::after {
@@ -447,6 +456,11 @@ textarea {
 
 .nonreactive {
   pointer-events: none !important; }
+
+iframe {
+  width: 100%;
+  height: 100%;
+  border: 0; }
 
 body {
   background-color: #222222;
