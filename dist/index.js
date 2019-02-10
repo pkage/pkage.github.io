@@ -2,6 +2,14 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+$('#scm-trigger').click(function () {
+	$('#3d').html('<iframe src="/3d/ocean/ocean.html"></iframe>');
+	wd.stop_simulation().then(function () {
+		window.trigger3DScene();
+		$('#scm-trigger').fadeOut();
+	});
+});
+
 var WorldDriver = function () {
 	function WorldDriver() {
 		_classCallCheck(this, WorldDriver);
@@ -11,6 +19,7 @@ var WorldDriver = function () {
 		this.engine = Matter.Engine.create({
 			element: document.getElementById('physics')
 		});
+		this.isStopped = false;
 		this.render = Matter.Render.create({
 			element: document.getElementById('physics'),
 			engine: this.engine,
@@ -79,6 +88,7 @@ var WorldDriver = function () {
 			var rbound = Matter.Bodies.rectangle(this.width + 24, this.height / 2, 50, this.height, boundOpts);
 			var tbound = Matter.Bodies.rectangle(this.width / 2, -24, this.width, 50, boundOpts);
 			var bbound = Matter.Bodies.rectangle(this.width / 2, this.height + 24, this.width, 50, boundOpts);
+			this.bbound = bbound;
 			var bounds = [lbound, rbound, tbound, bbound];
 			for (var c = 0; c < 4; c++) {
 				Matter.Body.set(bounds[c], boundOpts);
@@ -88,6 +98,9 @@ var WorldDriver = function () {
 	}, {
 		key: 'create_projectile',
 		value: function create_projectile() {
+			if (this.isStopped !== false) {
+				return;
+			}
 			var box = Math.random() > 0.95 ? Matter.Bodies.rectangle(this.width / 2, this.height / 2, 40 + Math.random() * 80, 40 + Math.random() * 80) : Matter.Bodies.circle(this.width / 2, this.height / 2, 10 + Math.random() * 20);
 			floc = this.create_vector(this.height / 2, this.width / 2);
 			floc.x += this.width / 4;
@@ -129,6 +142,24 @@ var WorldDriver = function () {
 		value: function run_simulation() {
 			Matter.Engine.run(this.engine);
 			Matter.Render.run(this.render);
+		}
+	}, {
+		key: 'stop_simulation',
+		value: function stop_simulation() {
+			var _this = this;
+
+			return new Promise(function (resolve, reject) {
+				_this.isStopped = true;
+				Matter.World.remove(_this.engine.world, _this.bbound);
+
+				console.log('setting timeout...');
+				setTimeout(function () {
+					console.log('waited on timeout. fading...');
+					$('#physics').fadeOut(400, function () {
+						return resolve();
+					});
+				}, 3000);
+			});
 		}
 	}, {
 		key: 'on_window_resize',
