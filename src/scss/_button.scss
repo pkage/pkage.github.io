@@ -1,0 +1,29 @@
+.button {
+	position: absolute;
+
+	top: 1em;
+	right: 1em;
+
+	font-size: 0.6em;
+	color: white;
+	opacity: 0.05;
+	cursor: pointer;
+	user-select: none;
+
+	transition: opacity 0.1s cubic-bezier(0,0,0.3,1);
+
+	&:hover {
+		opacity: 0.2;
+	}
+
+	animation: flash 0.5s cubic-bezier(0,0,0.3,1) 0.25s 4 alternate;
+}
+
+@keyframes flash {
+	from {
+		opacity: 0.05;
+	}
+	to {
+		opacity: 0.2;
+	}
+}
