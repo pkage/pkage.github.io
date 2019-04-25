@@ -82,7 +82,7 @@ class WorldDriver {
 			return;
 		}
 		var box = (Math.random() > 0.95) ? Matter.Bodies.rectangle(this.width/2, this.height/2, 40 + Math.random()*80, 40 + Math.random()*80) : Matter.Bodies.circle(this.width/2, this.height/2, 10 + Math.random()*20);
-		floc = this.create_vector(this.height/2, this.width/2);
+		const floc = this.create_vector(this.height/2, this.width/2);
 		floc.x += this.width/4;
 		floc.y += this.height/4;
 		if (Math.random() < 0.05) {
