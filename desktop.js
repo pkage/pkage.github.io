@@ -9,7 +9,7 @@ iconSelecting = icon => {
         icon.dataset.active = true
     })
     icon.addEventListener('dblclick', () => {
-        openWindow({title: 'Sorry!'}, `
+        this.wm.openWindow({title: 'Sorry!'}, `
             <p>It doesn't work.</p>
         `)
     })
