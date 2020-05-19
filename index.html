@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html>
+    <body>
+        <title>98 KAGE</title>
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+        <link rel="stylesheet" href="https://unpkg.com/98.css" />
+        <link rel="stylesheet" href="css/index.css" />
+        <link href="img/taskbar/WindowsFlagSmall.png" rel="icon">
+    </body>
+    <body>
+        <div class="window-host">
+            <div class="window" data-window style="top: 100px; left: 100px;" data-name="Welcome!" data-icon="img/taskbar/WindowsFlagSmall.png">
+                <div class="title-bar">
+                    <div class="title-bar-text">
+                        My First VB4 Program
+                    </div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Minimize"></button>
+                        <button aria-label="Maximize"></button>
+                        <button aria-label="Close"></button>
+                    </div>
+                </div>
+                <div class="window-body">
+                    <p>
+                        Hello, world!<br>
+                        This window has a fixed size.
+                    </p>
+                    <hr>
+                    <p> foo bar baz </p>
+                    <hr>
+                    <progress max="100" value="35"></progress>
+                </div>
+                <!--div class="window-resize-handle">
+                    <div class="window-resize-handle__inner"></div>
+                </div-->
+            </div>
+            <div class="window" data-window="initial" style="top: 120px; left: 120px;" data-name="test2">
+                <div class="title-bar">
+                    <div class="title-bar-text">
+                        Hello, world!
+                    </div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Minimize"></button>
+                        <button aria-label="Maximize"></button>
+                        <button aria-label="Close"></button>
+                    </div>
+                </div>
+                <div class="window-body">
+                    <p>Hello, world! <br> This one is resizable. </p>
+                </div>
+                <div class="window-resize-handle"></div>
+            </div>
+        </div>
+        <div class="desktop">
+            <div class="desktop-icon">
+                <img src="img/desktop/MyComputer.png" alt="My Computer">
+                <span>My Computer</span>
+            </div>
+            <div class="desktop-icon">
+                <img src="img/desktop/NetworkNeighborhood.png" alt="Network Neighborhood">
+                <span>Network Neighborhood</span>
+            </div>
+            <div class="desktop-icon">
+                <img src="img/desktop/MyDocuments.png" alt="My Documents">
+                <span>My Documents</span>
+            </div>
+            <div class="desktop-icon">
+                <img src="img/desktop/TextFile.png" alt="Resume">
+                <span>Resume.PDF</span>
+            </div>
+            <div class="desktop-icon">
+                <img src="img/desktop/BatchFile.png" alt="Batch File">
+                <span>DOOM.BAT</span>
+            </div>
+            <div class="desktop-icon">
+                <img src="img/desktop/WordPad.png" alt="Word File">
+                <span>Bresenham</span>
+            </div>
+            <div class="desktop-icon">
+                <img src="img/desktop/MSDOS.png" alt="DOS Prompt">
+                <span>MS-DOS Prompt</span>
+            </div>
+
+            <div class="desktop-icon">
+                <img src="img/desktop/RecyclingBin.png" alt="RecyclingBin">
+                <span>Recycling Bin</span>
+            </div>
+        </div>
+
+        <div class="task-bar">
+            <button id="start-btn">
+                <img src="img/taskbar/start.png"/>
+            </button>
+
+            <div class="task-bar__divider"></div>
+            
+            <img src="img/taskbar/ShowDesktop.png" alt="Show Desktop" title="Show Desktop" class="task-bar__quick">
+            <img src="img/taskbar/IESmall.png" alt="Internet Explorer" title="Lauch Internet Explorer Browser" class="task-bar__quick">
+            <img src="img/taskbar/OutlookExpress.png" alt="Outlook Express" title="Lauch Outlook Express" class="task-bar__quick">
+
+            <div class="task-bar__divider"></div>
+            <div class="task-bar__main" id="task-bar__main">
+
+            </div>
+            <div class="task-bar__divider"></div>
+            <div class="task-bar__tray">
+                <img src="img/taskbar/TaskScheduler.png" alt="Task Scheduler" title="Task Scheduler is ready." class="task-bar__tray__icon"/>
+                <img src="img/taskbar/Volume.png" alt="Volume" title="Volume" class="task-bar__tray__icon"/>
+                <span id="time">12:57 PM</span>
+            </div>
+        </div>
+
+        <script src="index.js" type="text/javascript"></script>
+        <script src="windows.js" type="text/javascript"></script>
+        <script src="desktop.js" type="text/javascript"></script>
+        <svg class="svg__defsonly"> 
+            <defs>
+                <filter id="blueselect">
+                     <feColorMatrix type="matrix"
+                         values="0.1   0     0     0 0
+                                 0     0.1   0     0 0
+                                 0     0     1     0 0
+                                 0     0     0     1 0"/>
+                </filter>
+            </defs>
+        </svg>
+    </body>
+</html>

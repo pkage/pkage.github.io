@@ -1,0 +1,209 @@
+:root {
+    --gray: #C0C0C0;
+    --inset: inset -1px -1px #0a0a0a,inset 1px 1px #dfdfdf,inset -2px -2px grey,inset 2px 2px #fff;
+    --inset__inverse: inset -1px -1px #fff,inset 1px 1px #0a0a0a,inset -2px -2px #dfdfdf,inset 2px 2px grey; 
+    --icon-shadow: -1px -1px #dfdfdf, 1px 1px gray;
+    --icon-shadow__active: 1px 1px #dfdfdf, -1px -1px gray;
+}
+
+body {
+    background-color: #008888;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    margin: 0;
+    height: 100vh;
+
+    font-family: "Pixelated MS Sans Serif";
+    font-smooth: never;
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* DESKTOP */
+
+.desktop {
+    flex-grow: 1;
+    
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    
+    justify-content: flex-start;
+
+    user-select: none;
+}
+
+.desktop-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width:  78px;
+    height: 64px;
+    margin: 5px;
+
+    text-align: center;
+    color: white;
+
+}
+.desktop-icon > img {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 5px;
+}
+.desktop-icon > span {
+    border: 1px solid transparent;
+}
+.desktop-icon[data-active="true"] > span {
+    background-color: blue;
+    border: 1px dotted gray;
+}
+.desktop-icon[data-active="true"] > img {
+    filter: url(#blueselect);
+}
+
+
+/* TASKBAR */
+
+.task-bar {
+    background-color: var(--gray);
+    /*
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    */
+    height: 28px;
+    padding: 2px 2px 0 2px;
+    /*box-shadow: inset -1px -1px #0a0a0a,inset 1px 1px #dfdfdf,inset -2px -2px grey,inset 2px 2px #fff;*/
+    box-shadow: inset 0px 1px #dfdfdf, inset 0px 2px #fff;
+
+    z-index: 10;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-begin;
+    align-items: center;
+}
+
+.task-bar__divider {
+    box-shadow: inset -1px -1px #0a0a0a,inset 1px 1px #dfdfdf,inset -2px -2px grey,inset 2px 2px #fff;
+    height: 22px;
+    width: 2px;
+    margin: 0px 2px;
+}
+
+.task-bar__quick {
+    margin: 0 2px;
+    cursor: pointer;
+    padding: 2px;
+}
+.task-bar__quick:hover {
+    box-shadow: -1px -1px #dfdfdf, 1px 1px gray;
+}
+.task-bar__quick:active {
+    box-shadow: 1px 1px #dfdfdf, -1px -1px gray;
+}
+
+.task-bar__main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+.task-bar__launch {
+    /*min-width: 0px !important;*/
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 5px !important;
+    margin: 2px;
+    cursor: pointer;
+}
+.task-bar__launch--active {
+    box-shadow: var(--inset__inverse);
+    background-image: url(../img/selected_texture.png);
+}
+.task-bar__launch > img {
+    margin-right: 4px;
+}
+
+.task-bar__tray {
+    height: 22px;
+    box-shadow: var(--icon-shadow__active);
+    padding: 0 2px;
+    margin: 0 2px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.task-bar__tray__icon {
+    margin: 0 1px;
+}
+
+/* WINDOWING */
+
+.window-host { 
+    z-index: 5;
+}
+.window-host > .window[data-window] {
+    position: fixed;
+}
+.window-resize-handle {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    height: 8px;
+    width:  8px;
+    cursor: nwse-resize;
+    background-color: transparent;
+}
+
+/* SHIMS */
+
+.window > .title-bar { user-select: none; }
+.window > .title-bar:active { cursor: move; }
+.window .title-bar-controls > button { cursor: pointer; }
+.window .title-bar-controls > button:active { padding: 0; }
+.window { position: relative; }
+.window[data-isresizing="true"] { user-select: none; }
+
+img {
+    image-rendering: optimizeSpeed;             /* STOP SMOOTHING, GIVE ME SPEED  */
+    image-rendering: -moz-crisp-edges;          /* Firefox                        */
+    image-rendering:   -o-crisp-edges;          /* Opera                          */
+    image-rendering: -webkit-optimize-contrast; /* Chrome (and eventually Safari) */
+    image-rendering: pixelated; /* Chrome */
+    image-rendering: optimize-contrast;         /* CSS3 Proposed                  */
+    -ms-interpolation-mode: nearest-neighbor;   /* IE8+                           */
+
+}
+.svg__defsonly {
+    height: 0px;
+}
+
+#start-btn {
+    min-width: 0px !important;
+    padding: 0 2px;
+    cursor: pointer;
+}
+#start-btn > img {
+    margin-top: 1px;
+}
+#start-btn:active > img {
+    transform: translate(1px, 1px);
+}
+
+#time {
+    margin: 0 4px;
+}
+
+
