@@ -298,8 +298,7 @@ class MouseManager {
 
         // this can stay permanently attached -- we care about all touches
         document.body.addEventListener('touchmove', this.updateMousePos)
-
-
+        document.body.addEventListener('touchend', this.cleanup)
     }
 
     updateMousePos(e) {
