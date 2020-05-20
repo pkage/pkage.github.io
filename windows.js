@@ -12,7 +12,7 @@ const assertParent = (el, target) => {
     return assertParent(el.parentNode, target)
 }
 
-const convertIfTouch = e => e.hasOwnProperty('touches') ? e.touches[0] : e
+const convertIfTouch = e => ('targetTouches' in e) ? e.touches[0] : e
 
 /* --- WM MAIN --- */
 
@@ -43,7 +43,7 @@ class WindowManager {
         const dragStart = e => {
             // ensure this is aimed at us
             if (!assertParent(e.target, title)) return
-            
+
             // start a drag
             win.dataset.isdragging = true
 
@@ -51,9 +51,9 @@ class WindowManager {
             e = convertIfTouch(e)
 
             // calculate offsets
-            const offsetX = e.layerX
-            const offsetY = e.layerY
             const winRect = win.getBoundingClientRect()
+            const offsetX = e.clientX - winRect.x
+            const offsetY = e.clientY - winRect.y
 
             window.mm.updateMousePos(e)
 
@@ -97,18 +97,17 @@ class WindowManager {
         win.style.minWidth  = `${rect.width - 4}px`
         win.style.minHeight = `${rect.height - 4}px`
 
-        handle.addEventListener('mouseup', () => {
+        const resizeEnd = () => {
             // resize ended
             win.dataset.isresizing = false
-        })
-        handle.addEventListener('mousedown', e => {
+        }
+        const resizeStart = e => {
             // assert this is aimed at us
             if (!assertParent(e.target, handle)) return
             win.dataset.isresizing = true
 
             // get the current info about the window
             const winRect = win.getBoundingClientRect()
-
 
             // first, stamp the size of the window into the styles
             win.style.width  = `${winRect.width - 4}px`
@@ -129,8 +128,12 @@ class WindowManager {
                 }
             }
             updateSize()
-        })
+        }
 
+        handle.addEventListener('mouseup', resizeEnd)
+        handle.addEventListener('mousedown', resizeStart)
+        handle.addEventListener('touchend', resizeEnd)
+        handle.addEventListener('touchstart', resizeStart)
     }
 
     /* --- WINDOW ORDERING / TASKBAR --- */
@@ -203,7 +206,7 @@ class WindowManager {
 
         // sort them alphabetically
         wins.sort((w1, w2) => w1.name > w2.name)
-        
+
         // append
         wins.forEach(w =>
             main_area.appendChild(createBtn(w)))
@@ -286,11 +289,15 @@ class MouseManager {
     constructor() {
         window.mouse = {}
 
+        // attach and detach event listeners on mouseup/mousedown for performance
         document.body.addEventListener('mousedown', () =>
             document.body.addEventListener('mousemove', this.updateMousePos))
         document.body.addEventListener('mouseup', () => {
             document.body.removeEventListener('mousemove', this.updateMousePos)
         })
+
+        // this can stay permanently attached -- we care about all touches
+        document.body.addEventListener('touchmove', this.updateMousePos)
 
 
     }
@@ -302,7 +309,7 @@ class MouseManager {
         e = convertIfTouch(e)
         window.mouse = {x: e.clientX, y: e.clientY}
     }
-    
+
     cleanup() {
         window.wm.cleanupAfterMoveEnd()
         window.mouse = {}

@@ -28,6 +28,7 @@ body {
 .desktop-container {
     flex-grow: 1;
     position: relative;
+    user-select: none;
 }
 
 .desktop {
@@ -171,6 +172,13 @@ body {
     width:  8px;
     cursor: nwse-resize;
     background-color: transparent;
+
+}
+@media (max-width: 768px) {
+    .window-resize-handle {
+        transform: scale(2);
+        transform-origin: 100% 100%;
+    }
 }
 
 .window-host > .window:not(:last-child) > .title-bar {
