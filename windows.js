@@ -18,6 +18,8 @@ const convertIfTouch = e => ('targetTouches' in e) ? e.touches[0] : e
 
 class WindowManager {
     constructor() {
+        window.mm.addMouseupListener(() => this.cleanupAfterMoveEnd())
+
         document.querySelectorAll('[data-window]')
             .forEach(win => {
                 this.attachWindowMovement(win, win.querySelector('.title-bar'))
@@ -294,11 +296,18 @@ class MouseManager {
             document.body.addEventListener('mousemove', this.updateMousePos))
         document.body.addEventListener('mouseup', () => {
             document.body.removeEventListener('mousemove', this.updateMousePos)
+            this.cleanup()
         })
+
+        this.cleanup_events = []
 
         // this can stay permanently attached -- we care about all touches
         document.body.addEventListener('touchmove', this.updateMousePos)
         document.body.addEventListener('touchend', this.cleanup)
+    }
+
+    addMouseupListener(fn) {
+        this.cleanup_events.push(fn)
     }
 
     updateMousePos(e) {
@@ -310,7 +319,9 @@ class MouseManager {
     }
 
     cleanup() {
-        window.wm.cleanupAfterMoveEnd()
+        for (let fn of this.cleanup_events) {
+            fn()
+        }
         window.mouse = {}
     }
 }

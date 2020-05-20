@@ -1,3 +1,10 @@
+/* GENERAL */
+/* z index of  0 : selections event sink
+ *             1 : desktop icons
+ *             2 : selections render
+ *             3+: windows
+ *            10 : taskbar
+ */
 :root {
     --gray: #C0C0C0;
     --inset: inset -1px -1px #0a0a0a,inset 1px 1px #dfdfdf,inset -2px -2px grey,inset 2px 2px #fff;
@@ -23,12 +30,30 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+/* SELECTIONS */
+
+.selections-container {
+    height: 0;
+}
+
+canvas#selections {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+
+    pointer-events: none;
+
+    /* will be sized by js */
+}
+
 /* DESKTOP */
 
 .desktop-container {
     flex-grow: 1;
     position: relative;
     user-select: none;
+    z-index: 1;
 }
 
 .desktop {
