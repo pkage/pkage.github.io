@@ -110,8 +110,8 @@ class WindowManager {
             const winRect = win.getBoundingClientRect()
 
             // first, stamp the size of the window into the styles
-            win.style.width  = `${winRect.width - 4}px`
-            win.style.height = `${winRect.height - 4}px`
+            win.style.width  = `${winRect.width}px`
+            win.style.height = `${winRect.height}px`
 
             window.mm.updateMousePos(e)
 
