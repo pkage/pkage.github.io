@@ -16,4 +16,10 @@ const updateTime = () => {
 }
 updateTime()
 
-
+/* shims for mobile */
+const recalculateHeight = () => {
+    document.body.style.height = `${window.innerHeight}px`
+}
+window.addEventListener('load', recalculateHeight)
+window.addEventListener('resize', recalculateHeight)
+window.addEventListener('orientationchange', recalculateHeight)

@@ -12,6 +12,10 @@ const assertParent = (el, target) => {
     return assertParent(el.parentNode, target)
 }
 
+const convertIfTouch = e => e.hasOwnProperty('touches') ? e.touches[0] : e
+
+/* --- WM MAIN --- */
+
 class WindowManager {
     constructor() {
         document.querySelectorAll('[data-window]')
@@ -32,22 +36,26 @@ class WindowManager {
     attachWindowMovement(win, title) {
         win.dataset.isdragging = false
 
-        title.addEventListener('mouseup', () => {
+        const dragEnd = () => {
             // make sure that the drag ended
             win.dataset.isdragging = false
-        })
-        title.addEventListener('mousedown', e => {
+        }
+        const dragStart = e => {
             // ensure this is aimed at us
             if (!assertParent(e.target, title)) return
             
             // start a drag
             win.dataset.isdragging = true
 
+            // touch support
+            e = convertIfTouch(e)
+
             // calculate offsets
             const offsetX = e.layerX
             const offsetY = e.layerY
             const winRect = win.getBoundingClientRect()
-            updateMousePos(e)
+
+            window.mm.updateMousePos(e)
 
             // read the mouse position
             const updatePosition = () => {
@@ -71,7 +79,12 @@ class WindowManager {
                 }
             }
             updatePosition()
-        })
+        }
+
+        title.addEventListener('mouseup', dragEnd)
+        title.addEventListener('mousedown', dragStart)
+        title.addEventListener('touchend', dragEnd)
+        title.addEventListener('touchstart', dragStart)
     }
 
     /* --- WINDOW RESIZING --- */
@@ -101,7 +114,7 @@ class WindowManager {
             win.style.width  = `${winRect.width - 4}px`
             win.style.height = `${winRect.height - 4}px`
 
-            updateMousePos(e)
+            window.mm.updateMousePos(e)
 
             const updateSize = () => {
                 let winW = window.mouse.x - winRect.x
@@ -209,7 +222,7 @@ class WindowManager {
         }
     }
 
-/* --- OPEN WINDOW --- */
+    /* --- OPEN WINDOW --- */
 
     openWindow({name, icon, title, resizable, x, y}, body, cb) {
         const winhost = document.querySelector('.window-host')
@@ -258,27 +271,47 @@ class WindowManager {
             cb(win)
         }
     }
+
+    cleanupAfterMoveEnd() {
+        document.querySelectorAll('[data-isdragging="true"]')
+            .forEach(el => el.dataset.isdragging = false)
+        document.querySelectorAll('[data-isresizing="true"]')
+            .forEach(el => el.dataset.isresizing = false)
+    }
 }
 
 /* --- MOUSE POSITIONING --- */
 
-window.mouse = {}
-const updateMousePos = e => {
-    // this is required because you can drag faster than a dom event can fire,
-    // and when your mouse exits a window title bar you can no longer drag it
-    window.mouse = {x: e.clientX, y: e.clientY}
+class MouseManager {
+    constructor() {
+        window.mouse = {}
+
+        document.body.addEventListener('mousedown', () =>
+            document.body.addEventListener('mousemove', this.updateMousePos))
+        document.body.addEventListener('mouseup', () => {
+            document.body.removeEventListener('mousemove', this.updateMousePos)
+        })
+
+
+    }
+
+    updateMousePos(e) {
+        // this is required because you can drag faster than a dom event
+        // can fire, and when your mouse exits a window title bar you can
+        // no longer drag it.
+        e = convertIfTouch(e)
+        window.mouse = {x: e.clientX, y: e.clientY}
+    }
+    
+    cleanup() {
+        window.wm.cleanupAfterMoveEnd()
+        window.mouse = {}
+    }
 }
-document.body.addEventListener('mousedown', () =>
-    document.body.addEventListener('mousemove', updateMousePos))
-document.body.addEventListener('mouseup', () => {
-    document.body.removeEventListener('mousemove', updateMousePos)
-    document.querySelectorAll('[data-isdragging]')
-        .forEach(el => el.dataset.isdragging = false)
-    document.querySelectorAll('[data-isresizing]')
-        .forEach(el => el.dataset.isresizing = false)
-    window.mouse = {}
-})
 
 
+// TOUCH SUPPORT
 
+
+window.mm = new MouseManager()
 window.wm = new WindowManager()
