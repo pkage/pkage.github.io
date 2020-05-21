@@ -1,9 +1,11 @@
-/* GENERAL */
+/* --- GENERAL --- */
+
 /* z index of  0 : selections event sink
  *             1 : desktop icons
  *             2 : selections render
  *             3+: windows
  *            10 : taskbar
+ *            15 : start menu
  */
 :root {
     --gray: #C0C0C0;
@@ -30,7 +32,54 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* SELECTIONS */
+/* --- START MENU --- */
+
+.start-menu__container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+
+    display: none;
+
+    z-index: 15;
+}
+
+.start-menu {
+    position: fixed;
+    bottom: 26px;
+    left: 0;
+
+    background-color: var(--gray);
+
+    min-height: 100px;
+    width: 174px;
+
+    box-shadow: var(--inset);
+
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 2px;
+
+    user-select: none;
+}
+.start-menu__stripe {
+    background: linear-gradient(180deg, navy, #1084d0);
+    width: 21px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 1em;
+}
+.start-menu__stripe-text {
+    transform: rotate(270deg);
+    color: white;
+}
+
+/* --- SELECTIONS --- */
 
 .selections-container {
     height: 0;
@@ -47,7 +96,7 @@ canvas#selections {
     /* will be sized by js */
 }
 
-/* DESKTOP */
+/* --- DESKTOP --- */
 
 .desktop-container {
     flex-grow: 1;
@@ -100,7 +149,7 @@ canvas#selections {
 }
 
 
-/* TASKBAR */
+/* --- TASKBAR --- */
 
 .task-bar {
     background-color: var(--gray);
@@ -181,7 +230,7 @@ canvas#selections {
     margin: 0 1px;
 }
 
-/* WINDOWING */
+/* --- WINDOWING --- */
 
 .window-host { 
     z-index: 5;
@@ -207,10 +256,10 @@ canvas#selections {
 }
 
 .window-host > .window:not(:last-child) > .title-bar {
-    background: linear-gradient(90deg, grey, var(--gray));
+    background: gray;
 }
 
-/* SHIMS */
+/* --- SHIMS ----*/
 
 .window > .title-bar { user-select: none; }
 .window > .title-bar:active { cursor: move; }
@@ -243,6 +292,15 @@ img {
 }
 #start-btn:active > img {
     transform: translate(1px, 1px);
+}
+
+#start-btn.start-btn--active {
+    transform: translate(1px, 1px);
+    box-shadow: var(--inset__inverse);
+}
+#start-btn.start-btn--active > img {
+    border: 1px dotted black;
+    margin: -1px;
 }
 
 #time {
