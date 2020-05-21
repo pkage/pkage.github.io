@@ -3,9 +3,9 @@
 class DesktopManager {
 
     constructor() {
-        window.addEventListener('load', this.resizeSelectionCanvas)
-        window.addEventListener('resize', this.resizeSelectionCanvas)
-        window.addEventListener('orientationchange', this.resizeSelectionCanvas)
+        window.addEventListener('load', this.resizeSelectionCanvas.bind(this))
+        window.addEventListener('resize', this.resizeSelectionCanvas.bind(this))
+        window.addEventListener('orientationchange', this.resizeSelectionCanvas.bind(this))
 
         this.desktop = document.querySelector('.desktop')
 
@@ -82,19 +82,29 @@ class DesktopManager {
 
     checkIconOverlap(icon, x1, y1, x2, y2) {
         let rect = icon.getBoundingClientRect()
-        // for simplicity we'll call it a hit if the centroid is in the
-        // selection box
 
-        let center_x = (rect.x + (rect.width  / 2)) * window.devicePixelRatio
-        let center_y = (rect.y + (rect.height / 2)) * window.devicePixelRatio
+        /*
+         * Conditions for missing an overlap:
+         *      - top edge of sel box is below bottom edge of icon
+         *      - left edge of sel box is past right edge of icon
+         *      - right edge of sel box is past left edge of icon
+         *      - bottom edge of sel box is above top edge of icon
+         */
 
-        if (Math.min(x1,x2) <= center_x && center_x <= Math.max(x1,x2)) {
-            if (Math.min(y1,y2) <= center_y && center_y <= Math.max(y1,y2)) {
-                return true
-            }
+        let i_x1 = rect.x * window.devicePixelRatio
+        let i_y1 = rect.y * window.devicePixelRatio
+
+        let i_x2 = (rect.x + rect.width ) * window.devicePixelRatio
+        let i_y2 = (rect.y + rect.height) * window.devicePixelRatio
+
+
+        if (!(Math.min(y1,y2) > i_y2  ||
+              Math.max(y1,y2) < i_y1) &&
+            !(Math.min(x1,x2) > i_x2  ||
+              Math.max(x1,x2) < i_x1)
+        ) {
+            return true
         }
-
-
         return false
     }
 
