@@ -50,7 +50,6 @@ class DesktopManager {
         })
         icon.addEventListener('dblclick', () => {
             if ('launch' in icon.dataset) {
-                console.log(icon, icon.dataset.launch)
                 window.pm.createInstance(icon.dataset.launch)
             } else {
                 window.wm.openWindow({title: 'Sorry!'}, `

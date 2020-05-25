@@ -1,0 +1,29 @@
+/* --- RESUME --- */
+.window[data-name="Resume Viewer"] > .window-body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+
+    height: calc(100% - 20px);
+}
+
+.window[data-name="Resume Viewer"] iframe {
+    flex-grow: 1;
+}
+
+.window[data-name="Resume Viewer"] .resume__toolbar {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: baseline;
+    justify-content: flex-start;
+
+    margin-top: 4px;
+    padding: 2px;
+}
+
+.window[data-name="Resume Viewer"] .resume__toolbar > a {
+    margin-left: 1rem;
+}
+

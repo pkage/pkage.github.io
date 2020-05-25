@@ -28,7 +28,6 @@ class ProgramManager {
     }
 
     createInstance(name) {
-        console.log(name)
         if (!this.hasPrototype(name)) {
             console.warn(`attempted to open unregistered program ${name}, ignoring...`)
             return
@@ -102,6 +101,3 @@ class Program {
 }
 
 window.pm = new ProgramManager()
-
-// debug
-window.pm.registerPrototype('mycomputer', Program)

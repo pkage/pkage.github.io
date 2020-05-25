@@ -230,7 +230,7 @@ class WindowManager {
 
     /* --- OPEN WINDOW --- */
 
-    openWindow({name, icon, title, resizable, x, y}, body, cb) {
+    openWindow({name, icon, title, resizable, x, y, width, height}, body, cb) {
         const winhost = document.querySelector('.window-host')
         const win = document.createElement('div')
         if (name) win.dataset.name = name
@@ -246,6 +246,7 @@ class WindowManager {
         }
         win.style.left = `${x}px`
         win.style.top  = `${y}px`
+
 
         win.classList.add('window')
         win.innerHTML = `
@@ -271,6 +272,14 @@ class WindowManager {
 
         // update the taskbar
         this.redrawTaskbarMain()
+
+        // apply sizing afterwards to stamp minimum resize
+        if (width !== undefined) {
+            win.style.width = `${width}px`
+        }
+        if (height !== undefined) {
+            win.style.height = `${height}px`
+        }
 
         // add a callback if necessary
         if (cb) {

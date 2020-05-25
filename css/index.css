@@ -288,6 +288,11 @@ canvas#selections {
 }
 .window-host > .window[data-window] {
     position: fixed;
+    /*
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;*/
 }
 .window-resize-handle {
     position: absolute;
@@ -317,6 +322,7 @@ canvas#selections {
 .window .title-bar-controls > button { cursor: pointer; }
 .window .title-bar-controls > button:active { padding: 0; }
 .window { position: relative; }
+.window[data-window] > .window-body {height: calc(100% - 36px);}
 .window[data-isresizing="true"] { user-select: none; }
 
 img {
