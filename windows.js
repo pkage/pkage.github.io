@@ -30,8 +30,6 @@ class WindowManager {
         this.redrawTaskbarMain()
     }
 
-
-
     /* --- WINDOW MOVEMENT --- */
 
     // attach window movement controls
@@ -221,6 +219,9 @@ class WindowManager {
         if (closeBtn) {
             closeBtn
                 .addEventListener('click', () => {
+                    if ('_pm_id' in win.dataset) {
+                        window.pm.closeInstance(win.dataset._pm_id)
+                    }
                     win.remove()
                     this.redrawTaskbarMain()
                 })
@@ -284,6 +285,7 @@ class WindowManager {
             .forEach(el => el.dataset.isresizing = false)
     }
 }
+
 
 /* --- MOUSE POSITIONING --- */
 

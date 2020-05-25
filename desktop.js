@@ -49,14 +49,18 @@ class DesktopManager {
             icon.dataset.active = true
         })
         icon.addEventListener('dblclick', () => {
-            window.wm.openWindow({title: 'Sorry!'}, `
-                <p>It doesn't work.</p>
-            `)
+            if ('launch' in icon.dataset) {
+                console.log(icon, icon.dataset.launch)
+                window.pm.createInstance(icon.dataset.launch)
+            } else {
+                window.wm.openWindow({title: 'Sorry!'}, `
+                    <p>It doesn't work.</p>
+                `)
+            }
         })
     }
 
     clearIconSelections() {
-        console.trace()
         document.querySelector('.desktop')
             .querySelectorAll('.desktop-icon[data-active="true"]')
             .forEach(el => el.dataset.active = false)
