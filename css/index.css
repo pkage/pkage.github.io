@@ -79,6 +79,53 @@ body {
     color: white;
 }
 
+.start-menu__menu {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column-reverse;
+
+    align-items: stretch;
+    justify-content: flex-start;
+}
+
+.start-menu__item {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 4px 6px;
+    margin: 1px 0;
+    cursor: pointer;
+}
+.start-menu__icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 1rem;
+}
+.start-menu__item-text {
+    flex-grow: 1;
+}
+.start-menu__item:hover {
+    background-color: navy;
+    color: white;
+}
+.start-menu__item:last-child {
+    margin-top: 0px;
+}
+.start-menu__item-menu-indicator {
+    width: 4px;
+    height: 7px;
+}
+.start-menu__item:hover > .start-menu__item-menu-indicator {
+    filter: invert();
+}
+.start-menu__divider {
+    border-bottom: 1px solid white;
+    border-top: 1px solid gray;
+    margin: 2px 2px;
+}
+
+
 /* --- SELECTIONS --- */
 
 .selections-container {
@@ -207,6 +254,10 @@ canvas#selections {
     padding: 0 5px !important;
     margin: 2px;
     cursor: pointer;
+}
+.task-bar__launch > img {
+    width: 16px;
+    height: 16px;
 }
 .task-bar__launch--active {
     box-shadow: var(--inset__inverse);

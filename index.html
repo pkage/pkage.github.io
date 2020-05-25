@@ -57,23 +57,23 @@
         <div class="desktop-container">
             <canvas id="selections"></canvas>
             <div class="desktop">
-                <div class="desktop-icon">
+                <div class="desktop-icon" data-launch="mycomputer">
                     <img src="img/desktop/MyComputer.png" alt="My Computer">
                     <span>My Computer</span>
                 </div>
-                <div class="desktop-icon">
+                <div class="desktop-icon" data-launch="networkneighborhod">
                     <img src="img/desktop/NetworkNeighborhood.png" alt="Network Neighborhood">
                     <span>Network Neighborhood</span>
                 </div>
-                <div class="desktop-icon">
+                <div class="desktop-icon" data-launch="mydocuments">
                     <img src="img/desktop/MyDocuments.png" alt="My Documents">
                     <span>My Documents</span>
                 </div>
-                <div class="desktop-icon">
+                <div class="desktop-icon" data-launch="resume">
                     <img src="img/desktop/TextFile.png" alt="Resume">
                     <span>Resume.PDF</span>
                 </div>
-                <div class="desktop-icon">
+                <div class="desktop-icon" data-launch="doom">
                     <img src="img/desktop/BatchFile.png" alt="Batch File">
                     <span>DOOM.BAT</span>
                 </div>
@@ -81,12 +81,12 @@
                     <img src="img/desktop/WordPad.png" alt="Word File">
                     <span>Bresenham</span>
                 </div>
-                <div class="desktop-icon">
+                <div class="desktop-icon" data-launch="prompt">
                     <img src="img/desktop/MSDOS.png" alt="DOS Prompt">
                     <span>MS-DOS Prompt</span>
                 </div>
 
-                <div class="desktop-icon">
+                <div class="desktop-icon" data-launch="recyclingbin">
                     <img src="img/desktop/RecyclingBin.png" alt="RecyclingBin">
                     <span>Recycling Bin</span>
                 </div>
@@ -126,8 +126,46 @@
                 </div>
                 <div class="start-menu__menu">
                     <div class="start-menu__item">
-                        <img src="" alt="">
-                        <span>Shut Down</span>
+                        <img class="start-menu__icon" src="img/startmenu/ShutDown.png" alt="Shut Down">
+                        <span class="start-menu__item-text">Shut Down...</span>
+                    </div>
+                    <div class="start-menu__item">
+                        <img class="start-menu__icon" src="img/startmenu/LogOff.png" alt="Log Off">
+                        <span class="start-menu__item-text">Log Off Patrick...</span>
+                    </div>
+                    <div class="start-menu__divider"></div>
+                    <div class="start-menu__item">
+                        <img class="start-menu__icon" src="img/startmenu/Run.png" alt="Run">
+                        <span class="start-menu__item-text">Run...</span>
+                    </div>
+                    <div class="start-menu__item">
+                        <img class="start-menu__icon" src="img/startmenu/Help.png" alt="Help">
+                        <span class="start-menu__item-text">Help</span>
+                    </div>
+                    <div class="start-menu__item">
+                        <img class="start-menu__icon" src="img/startmenu/Find.png" alt="Find">
+                        <span class="start-menu__item-text">Find</span>
+                        <img src="img/startmenu/MenuIndicator.png" alt="Menu" class="start-menu__item-menu-indicator">
+                    </div>
+                    <div class="start-menu__item">
+                        <img class="start-menu__icon" src="img/startmenu/Settings.png" alt="Settings">
+                        <span class="start-menu__item-text">Settings</span>
+                        <img src="img/startmenu/MenuIndicator.png" alt="Menu" class="start-menu__item-menu-indicator">
+                    </div>
+                    <div class="start-menu__item">
+                        <img class="start-menu__icon" src="img/startmenu/Documents.png" alt="Documents">
+                        <span class="start-menu__item-text">Documents</span>
+                        <img src="img/startmenu/MenuIndicator.png" alt="Menu" class="start-menu__item-menu-indicator">
+                    </div>
+                    <div class="start-menu__item">
+                        <img class="start-menu__icon" src="img/startmenu/Favorites.png" alt="Favorites">
+                        <span class="start-menu__item-text">Favorites</span>
+                        <img src="img/startmenu/MenuIndicator.png" alt="Menu" class="start-menu__item-menu-indicator">
+                    </div>
+                    <div class="start-menu__item">
+                        <img class="start-menu__icon" src="img/startmenu/Programs.png" alt="Programs">
+                        <span class="start-menu__item-text">Programs</span>
+                        <img src="img/startmenu/MenuIndicator.png" alt="Menu" class="start-menu__item-menu-indicator">
                     </div>
                 </div>
             </div>
@@ -138,6 +176,7 @@
         <script src="windows.js" type="text/javascript"></script>
         <script src="desktop.js" type="text/javascript"></script>
         <script src="startmenu.js" type="text/javascript"></script>
+        <script src="programs.js" type="text/javascript"></script>
         <svg class="svg__defsonly"> 
             <defs>
                 <filter id="blueselect">
