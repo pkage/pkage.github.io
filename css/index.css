@@ -217,6 +217,8 @@ canvas#selections {
     flex-direction: row;
     justify-content: flex-begin;
     align-items: center;
+
+    user-select: none;
 }
 
 .task-bar__divider {

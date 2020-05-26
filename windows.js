@@ -21,6 +21,7 @@ class WindowManager {
         this.WM_BASE_ZINDEX = 3
         window.mm.addMouseupListener(() => this.cleanupAfterMoveEnd())
 
+        // initialize all windows already present in DOM
         document.querySelectorAll('[data-window]')
             .forEach(win => {
                 this.attachWindowMovement(win, win.querySelector('.title-bar'))
@@ -28,6 +29,10 @@ class WindowManager {
                 this.attachWindowOrdering(win)
                 this.attachWindowButtons( win)
             })
+
+        // show desktop
+        document.querySelector('.task-bar__quick[alt="Show Desktop"]')
+            .addEventListener('click', this.minimizeAll.bind(this))
 
         this.redrawTaskbarMain()
     }
@@ -404,6 +409,13 @@ class WindowManager {
             .forEach(el => el.dataset.isdragging = false)
         document.querySelectorAll('[data-isresizing="true"]')
             .forEach(el => el.dataset.isresizing = false)
+    }
+
+    minimizeAll() {
+        for (let win of document.querySelectorAll('.window[data-window]')) {
+            win.dataset.wm_minimized = true
+        }
+        this.redrawTaskbarMain()
     }
 }
 
