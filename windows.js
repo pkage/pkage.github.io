@@ -18,6 +18,7 @@ const convertIfTouch = e => ('targetTouches' in e) ? e.touches[0] : e
 
 class WindowManager {
     constructor() {
+        this.WM_BASE_ZINDEX = 3
         window.mm.addMouseupListener(() => this.cleanupAfterMoveEnd())
 
         document.querySelectorAll('[data-window]')
@@ -27,6 +28,7 @@ class WindowManager {
                 this.attachWindowOrdering(win)
                 this.attachWindowButtons( win)
             })
+
         this.redrawTaskbarMain()
     }
 
@@ -140,22 +142,76 @@ class WindowManager {
 
     // Helper - moves a window to the top
     windowFocus(win) {
-            let order = Array.prototype.indexOf.call(win.parentNode.childNodes, win)
-            let parentLen = win.parentNode.childNodes.length
+        // lower order = renders in front
+        let order = Number(win.dataset.wm_order)
 
-            if (order + 1 === parentLen) return
+        // first, re-order all the windows from 0 -> this window (in other words,
+        // all windows in front of this one) to shift one up
+        for (let otherwin of document.querySelectorAll('[data-window][data-wm_order]')) {
+            let otherorder = Number(otherwin.dataset.wm_order)
+            if (otherorder > order) {
+                // ignore, we don't need to reorder higher orders
+                continue
+            }
+            
+            // shift up
+            otherwin.dataset.wm_order = otherorder + 1
+        }
 
-            win.parentNode.appendChild(win)
+        // set this one to be the front
+        win.dataset.wm_order = 0
+        
+        // now repaint all windows
+        this.redrawZOrders()
+        this.redrawTaskbarMain()
+    }
 
-            this.redrawTaskbarMain()
+    redrawZOrders() {
+        let parentLen = document.querySelector('.window-host').children.length
+
+        // paint all windows' z-indices back to front (to minimize flashing)
+        for (let i = parentLen - 1; i >= 0; i--) {
+            document.querySelector(`[data-window][data-wm_order="${i}"]`)
+                .style.zIndex = this.WM_BASE_ZINDEX + (parentLen - i)
+        }
+    }
+
+    removeWindow(win) {
+        let order = Number(win.dataset.wm_order)
+        let parentLen = win.parentNode.children.length
+
+        // re-order all the windows from this window to the back, and shift them down
+        for (let otherwin of document.querySelectorAll('[data-window][data-wm_order]')) {
+            let otherorder = Number(otherwin.dataset.wm_order)
+            if (otherorder < order) {
+                // ignore, we don't need to reorder lower orders
+                continue
+            }
+            
+            // shift down
+            otherwin.dataset.wm_order = otherorder - 1
+        }
+
+        win.remove()
+
+        this.redrawZOrders()
+        this.redrawTaskbarMain()
     }
 
     attachWindowOrdering(win) {
+        if (!('wm_order' in win.dataset)) {
+            let parentLen = win.parentNode.children.length
+            win.dataset.wm_order = parentLen
+        }
+
         win.addEventListener('mousedown', e => {
             // assert this is aimed at us
             if (!assertParent(e.target, win)) return
             this.windowFocus(win)
         })
+
+        // initally, set the focus here
+        this.windowFocus(win)
     }
 
     redrawTaskbarMain () {
@@ -197,12 +253,16 @@ class WindowManager {
         // find all named windows
         let wins = []
         winhost.querySelectorAll('.window[data-name]')
-            .forEach(w => wins.push({name: w.dataset.name, icon: w.dataset.icon}))
+            .forEach(w => wins.push({
+                name: w.dataset.name,
+                icon: w.dataset.icon,
+                active: (w.dataset.wm_order === '0') // picks active
+            }))
 
         if (wins.length === 0) return
 
         // pick the last one as the active one
-        wins[wins.length - 1].active = true
+        //wins[wins.length - 1].active = true
 
         // sort them alphabetically
         wins.sort((w1, w2) => w1.name > w2.name)
@@ -222,8 +282,7 @@ class WindowManager {
                     if ('_pm_id' in win.dataset) {
                         window.pm.closeInstance(win.dataset._pm_id)
                     }
-                    win.remove()
-                    this.redrawTaskbarMain()
+                    this.removeWindow(win)
                 })
         }
     }

@@ -4,8 +4,8 @@
  *             1 : desktop icons
  *             2 : selections render
  *             3+: windows
- *            10 : taskbar
- *            15 : start menu
+ *           999 : taskbar
+ *          1010 : start menu
  */
 :root {
     --gray: #C0C0C0;
@@ -43,7 +43,7 @@ body {
 
     display: none;
 
-    z-index: 15;
+    z-index: 1010;
 }
 
 .start-menu {
@@ -211,7 +211,7 @@ canvas#selections {
     /*box-shadow: inset -1px -1px #0a0a0a,inset 1px 1px #dfdfdf,inset -2px -2px grey,inset 2px 2px #fff;*/
     box-shadow: inset 0px 1px #dfdfdf, inset 0px 2px #fff;
 
-    z-index: 10;
+    z-index: 999;
 
     display: flex;
     flex-direction: row;
@@ -311,7 +311,7 @@ canvas#selections {
     }
 }
 
-.window-host > .window:not(:last-child) > .title-bar {
+.window-host > .window:not([data-wm_order="0"]) > .title-bar {
     background: gray;
 }
 
