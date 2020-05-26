@@ -223,11 +223,12 @@ class WindowManager {
     redrawTaskbarMain () {
         let winhost = document.querySelector('.window-host')
 
-        if (winhost.children.length === 0) return
 
         // clear the main area
         let main_area = document.querySelector('#task-bar__main')
         main_area.innerHTML = ''
+
+        if (winhost.children.length === 0) return
 
         // create the button
         const createBtn = winfo => {
