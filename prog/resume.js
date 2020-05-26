@@ -49,8 +49,8 @@ class ResumeProgram extends Program {
                 ...wminfo,
                 width: Math.floor(window.innerWidth * 0.8 - 100),
                 height: Math.floor(window.innerHeight * 0.8),
-                x: 50,
-                y: 50
+                x: 75,
+                y: 75
             }
 
         }
