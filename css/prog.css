@@ -12,6 +12,9 @@
 .window[data-name="Resume Viewer"] iframe {
     flex-grow: 1;
 }
+.window[data-name="Resume Viewer"]:not([data-wm_order="0"]) iframe {
+    pointer-events: none;
+}
 
 .window[data-name="Resume Viewer"] .resume__toolbar {
     display: flex;
