@@ -250,10 +250,14 @@ class WindowManager {
             btn.classList.add('task-bar__launch')
             if (winfo.active) {
                 btn.classList.add('task-bar__launch--active')
+                btn.addEventListener('click', () => {
+                    this.minimizeWindow(document.querySelector(`.window[data-name="${winfo.name}"]`))
+                })
+            } else {
+                btn.addEventListener('click', () => {
+                    this.windowFocus(document.querySelector(`.window[data-name="${winfo.name}"]`))
+                })
             }
-            btn.addEventListener('click', () => {
-                this.windowFocus(document.querySelector(`.window[data-name="${winfo.name}"]`))
-            })
             return btn
         }
 
@@ -310,26 +314,29 @@ class WindowManager {
         if (minimizeBtn) {
             minimizeBtn
                 .addEventListener('click', () => {
-                    win.dataset.wm_minimized = true
-                    // if this window was the active one we need to figure out
-                    // which one should be the next active window
-                    if (win.dataset.wm_order === '0') {
-                        let parentLen = document.querySelector('.window-host').children.length
-
-                        // this could've been recursive but wasn't
-                        for (let i = 1; i < parentLen; i++) {
-                            // look for the next not minimized window
-                            let nextwin = document.querySelector(`[data-wm_order="${i}"]`)
-                            if (nextwin && nextwin.dataset.wm_minimized !== 'true') {
-                                this.windowFocus(nextwin)
-                                return
-                            }
-                        }
-                        this.redrawTaskbarMain()
-                    }
-
+                    this.minimizeWindow(win)
                 })
                 
+        }
+    }
+
+    minimizeWindow(win) {
+        win.dataset.wm_minimized = true
+        // if this window was the active one we need to figure out
+        // which one should be the next active window
+        if (win.dataset.wm_order === '0') {
+            let parentLen = document.querySelector('.window-host').children.length
+
+            // this could've been recursive but wasn't
+            for (let i = 1; i < parentLen; i++) {
+                // look for the next not minimized window
+                let nextwin = document.querySelector(`[data-wm_order="${i}"]`)
+                if (nextwin && nextwin.dataset.wm_minimized !== 'true') {
+                    this.windowFocus(nextwin)
+                    return
+                }
+            }
+            this.redrawTaskbarMain()
         }
     }
 
