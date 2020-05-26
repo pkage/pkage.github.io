@@ -42,6 +42,9 @@ class ProgramManager {
         window.wm.openWindow(wminfo, body, win => {
             win.dataset._pm_id = id
 
+            // make sure the thing knows about the window
+            handle.setWindowHandle(win)
+
             // dispatch handler
             handle.onAttach(win)
         })
@@ -85,19 +88,14 @@ class Program {
     }
 
     getBodyHandle() {
-        if (this.handle !== null) {
+        if (this.handle === null) {
             return null
         }
         return this.handle.querySelector('.window-body')
     }
 
-    onAttach() {
-        console.log('window attached')
-    }
-
-    onClose() {
-        console.log('window closed')
-    }
+    onAttach() {}
+    onClose() {}
 }
 
 window.pm = new ProgramManager()
