@@ -16,6 +16,15 @@ const updateTime = () => {
 }
 updateTime()
 
+const upgradeWelcomeResume = () => {
+    let link = document.querySelector('[data-upgrade="intro-launchresume"]')
+    link.addEventListener('click', e => {
+        e.preventDefault()
+        window.pm.createInstance('resume')
+    })
+}
+upgradeWelcomeResume()
+
 /* shims for mobile */
 const recalculateHeight = () => {
     document.body.style.height = `${window.innerHeight}px`

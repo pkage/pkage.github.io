@@ -31,6 +31,33 @@ body {
     -webkit-font-smoothing: none;
     -moz-osx-font-smoothing: grayscale;
 }
+
+/* --- TYPOGRAPHY --- */
+
+h1, h2, h3, h4, h5 {
+    font-family: "Arial", -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+}
+
+noscript {
+    color: red;
+    font-weight: bold;
+}
+.typography h1 {
+    font-size: 2rem;
+    margin: 0;
+    font-family: "Arial", -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif !important;
+}
+
+.typography p {
+    line-height: 1.5;
+}
+
+hr.hr--accent {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(90deg, red, blue);
+}
+
 /* --- DIALOGS --- */
 
 .window__dialog {

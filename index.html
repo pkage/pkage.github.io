@@ -13,31 +13,66 @@
     </body>
     <body>
         <div class="window-host">
-            <div class="window" data-window style="top: 100px; left: 100px;" data-name="Welcome!" data-icon="img/taskbar/WindowsFlagSmall.png" data-wm_order="1">
+            <div class="window" data-window style="top: 50px; left: 50px;" data-name="Welcome!" data-icon="img/taskbar/WindowsFlagSmall.png" data-wm_order="0">
                 <div class="title-bar">
                     <div class="title-bar-text">
-                        My First VB4 Program
+                        Welcome!
                     </div>
                     <div class="title-bar-controls">
                         <button aria-label="Minimize"></button>
                         <button aria-label="Close"></button>
                     </div>
                 </div>
-                <div class="window-body">
+                <div class="window-body typography">
+
+                    <h1>Patrick Kage</h1>
+                    <hr class="hr--accent"/>
                     <p>
-                        Hello, world!<br>
-                        This window has a fixed size.
+                        Artificial Intelligence &amp; Full Stack Developer<br/>
+                        Final Year <abbr title="Bachelor of Science (Honours), projected First Class">BSc(H)</abbr> <strong>Artificial Intelligence &amp; Computer Science</strong><br/> 
+                        University of Edinburgh, Edinburgh, Scotland
                     </p>
-                    <hr>
-                    <p> foo bar baz </p>
-                    <hr>
-                    <progress max="100" value="35"></progress>
-                </div>
+                    <hr class="hr--accent"/>
+                    <p>
+                        Find me on:
+                        <ul>
+                            <li>
+                                <a href="//github.com/pkage" target="_blank" rel="noopener">GitHub</a>
+                            </li>
+                            <li>
+                                <a href="//www.linkedin.com/in/patrick-kage-652ba8122/" target="_blank" rel="noopener">LinkedIn</a>
+                            </li>
+                            <li>
+                                <a href="//keybase.io/pkage" target="_blank" rel="noopener">Keybase</a>
+                            </li>
+                            <li>
+                                <a href="mailto:patrick@kage.dev">Email</a>
+                            </li>
+                        </ul>
+                        And of course:
+                        <ul>
+                            <li>
+                                <a href="//kage.dev/resume.pdf" target="_blank" data-upgrade="intro-launchresume">Resume</a>
+                            </li>
+                        </ul>
+                    </p>
+                    <hr class="hr--accent"/>
+                    <p>
+                        This website is a faithful tribute to Windows 98, and most elements are<br/>
+                        as interactive as they would be in 1998, even on mobile devices.<br/>
+                        Feel free to play around!
+                        <noscript>
+                            <br/>
+                            Please note that this requires Javascript, which you have <br/>turned off.
+                            Your experience may be degraded.
+                        </noscript>
+                    </p>
+               </div>
                 <!--div class="window-resize-handle">
                     <div class="window-resize-handle__inner"></div>
                 </div-->
             </div>
-            <div class="window" data-window="initial" style="top: 120px; left: 120px;" data-name="test2" data-wm_order="0">
+            <!--div class="window" data-window="initial" style="top: 120px; left: 120px;" data-name="test2" data-wm_order="1">
                 <div class="title-bar">
                     <div class="title-bar-text">
                         Hello, world!
@@ -52,7 +87,7 @@
                     <p>Hello, world! <br> This one is resizable. </p>
                 </div>
                 <div class="window-resize-handle"></div>
-            </div>
+            </div-->
         </div>
         <div class="desktop-container">
             <canvas id="selections"></canvas>
