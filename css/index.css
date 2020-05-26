@@ -31,6 +31,37 @@ body {
     -webkit-font-smoothing: none;
     -moz-osx-font-smoothing: grayscale;
 }
+/* --- DIALOGS --- */
+
+.window__dialog {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+.window__dialog-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 10px;
+}
+.window__dialog-info > p {
+    flex-grow: 1;
+}
+.window__dialog-info > img {
+    margin: 10px 10px 10px 0;
+}
+.window__dialog-action {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.window__dialog-action button {
+    margin: 0 2px;
+    min-width: 0px;
+}
+
 
 /* --- START MENU --- */
 
@@ -314,7 +345,7 @@ canvas#selections {
 }
 
 .window-host > .window:not([data-wm_order="0"]) > .title-bar {
-    background: gray;
+    background: #85878A;
 }
 
 /* --- SHIMS ----*/
