@@ -25,6 +25,15 @@ const upgradeWelcomeResume = () => {
 }
 upgradeWelcomeResume()
 
+// make sure we can re-open later without copying too much code
+const saveWelcomePage = () => {
+    window.__welcomepage = document
+        .querySelector('.window[data-name="Welcome!"]')
+        .querySelector('.window-body')
+        .innerHTML
+}
+saveWelcomePage()
+
 /* shims for mobile */
 const recalculateHeight = () => {
     document.body.style.height = `${window.innerHeight}px`
