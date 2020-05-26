@@ -5,7 +5,10 @@ class StartMenuManager {
         this.btn  = document.querySelector('#start-btn')
 
         this.btn.addEventListener('click', this.openStartMenu.bind(this))
-        this.bg.addEventListener('click', this.closeStartMenu.bind(this))
+        this.bg.addEventListener('click', this.startMenuBackgroundClick.bind(this))
+
+        this.menu.querySelectorAll('[data-launch]')
+            .forEach(el => this.attachClickHandler(el))
     }
 
     openStartMenu() {
@@ -13,15 +16,26 @@ class StartMenuManager {
         this.btn.classList.add('start-btn--active')
     }
 
-    closeStartMenu(e) {
+    startMenuBackgroundClick(e) {
         if (e.target !== this.bg) {
             return
         }
+        this.closeStartMenu()
+    }
+
+    closeStartMenu() {
         this.bg.style.display = 'none'
         this.btn.classList.remove('start-btn--active')
         
     }
-
+    
+    attachClickHandler(el) {
+        if (!el.dataset.launch) {return;}
+        el.addEventListener('click', () => {
+            this.closeStartMenu()
+            window.pm.createInstance(el.dataset.launch)
+        })
+    }
 }
 
 window.sm = new StartMenuManager()

@@ -187,6 +187,53 @@ hr.hr--accent {
     margin: 2px 2px;
 }
 
+.start-menu__submenu-container {
+    position: relative;
+    width: 0;
+    height: 24px;
+
+    opacity: 0;
+    pointer-events: none;
+
+}
+.start-menu__item:hover > .start-menu__submenu-container {
+    opacity: 1;
+    pointer-events: initial;
+}
+
+.start-menu__submenu {
+    position: absolute;
+    top: -8px;
+    left: 6px;
+    min-width: 130px;
+    box-shadow: var(--inset);
+    background-color: var(--gray);
+    color: black;
+    padding: 2px;
+
+}
+.start-menu__submenu-item {
+    padding: 2px 3px 2px 4px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    cursor: pointer;
+}
+.start-menu__submenu-item > img {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+}
+.start-menu__submenu-item > span {
+    flex-grow: 1;
+}
+.start-menu__submenu-item:hover {
+    color: white;
+    background-color: navy;
+}
 
 /* --- SELECTIONS --- */
 
