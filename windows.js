@@ -160,6 +160,7 @@ class WindowManager {
 
         // set this one to be the front
         win.dataset.wm_order = 0
+        win.dataset.wm_minimized = false
         
         // now repaint all windows
         this.redrawZOrders()
@@ -256,13 +257,10 @@ class WindowManager {
             .forEach(w => wins.push({
                 name: w.dataset.name,
                 icon: w.dataset.icon,
-                active: (w.dataset.wm_order === '0') // picks active
+                active: (w.dataset.wm_order === '0' && w.dataset.wm_minimized !== 'true') // picks active
             }))
 
         if (wins.length === 0) return
-
-        // pick the last one as the active one
-        //wins[wins.length - 1].active = true
 
         // sort them alphabetically
         wins.sort((w1, w2) => w1.name > w2.name)
@@ -276,6 +274,8 @@ class WindowManager {
 
     attachWindowButtons(win) {
         const closeBtn = win.querySelector('button[aria-label="Close"]')
+        const maximizeBtn = win.querySelector('button[aria-label="Maximize"]')
+        const minimizeBtn = win.querySelector('button[aria-label="Minimize"]')
         if (closeBtn) {
             closeBtn
                 .addEventListener('click', () => {
@@ -284,6 +284,46 @@ class WindowManager {
                     }
                     this.removeWindow(win)
                 })
+        }
+        if (maximizeBtn) {
+            maximizeBtn
+                .addEventListener('click', () => {
+                    if (win.dataset.wm_maximized === 'true') {
+                        let prevpos = win.dataset.wm_prev_pos.split(',')
+                        win.dataset.wm_maximized = false
+                        win.style.top  = prevpos[0]
+                        win.style.left = prevpos[1]
+                        maximizeBtn.setAttribute('aria-label', 'Maximize')
+                    } else {
+                        win.dataset.wm_prev_pos = `${win.style.top},${win.style.left}`
+                        win.dataset.wm_maximized = true
+                        maximizeBtn.setAttribute('aria-label', 'Restore')
+                    }
+                })
+        }
+        if (minimizeBtn) {
+            minimizeBtn
+                .addEventListener('click', () => {
+                    win.dataset.wm_minimized = true
+                    // if this window was the active one we need to figure out
+                    // which one should be the next active window
+                    if (win.dataset.wm_order === '0') {
+                        let parentLen = document.querySelector('.window-host').children.length
+
+                        // this could've been recursive but wasn't
+                        for (let i = 1; i < parentLen; i++) {
+                            // look for the next not minimized window
+                            let nextwin = document.querySelector(`[data-wm_order="${i}"]`)
+                            if (nextwin && nextwin.dataset.wm_minimized !== 'true') {
+                                this.windowFocus(nextwin)
+                                return
+                            }
+                        }
+                        this.redrawTaskbarMain()
+                    }
+
+                })
+                
         }
     }
 
@@ -306,12 +346,25 @@ class WindowManager {
         win.style.left = `${x}px`
         win.style.top  = `${y}px`
 
+        // compute what controls are necessary
+        let controls = []
+        if (name) {
+            controls.push('<button aria-label="Minimize"></button>')
+        }
+        if (resizable) {
+            controls.push('<button aria-label="Maximize"></button>')
+        }
+
+        controls = controls.join('\n')
+
+
 
         win.classList.add('window')
         win.innerHTML = `
             <div class="title-bar">
                 <div class="title-bar-text">${title}</div>
                 <div class="title-bar-controls">
+                    ${controls}
                     <button aria-label="Close"></button>
                 </div>
             </div>

@@ -324,6 +324,14 @@ canvas#selections {
 .window { position: relative; }
 .window[data-window] > .window-body {height: calc(100% - 36px);}
 .window[data-isresizing="true"] { user-select: none; }
+.window[data-wm_minimized="true"] { pointer-events: none; opacity: 0; }
+.window[data-wm_maximized="true"] {
+    height: calc(100% - 36px) !important;
+    width:  100% !important;
+    left: 0px !important;
+    top:  0px !important;
+    transform: translateX(-3px)
+}
 
 img {
     image-rendering: optimizeSpeed;             /* STOP SMOOTHING, GIVE ME SPEED  */
