@@ -6,6 +6,9 @@
  *             3+: windows
  *           999 : taskbar
  *          1010 : start menu
+ *
+ *  The reason for the huge gap for windows is bc each window has its own
+ *  z-index (to properly support window ordering)
  */
 :root {
     --gray: #C0C0C0;
@@ -28,7 +31,7 @@ body {
 
     font-family: "Pixelated MS Sans Serif";
     font-smooth: never;
-    -webkit-font-smoothing: none;
+    -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
@@ -122,6 +125,7 @@ hr.hr--accent {
     justify-content: flex-start;
     padding: 2px;
 
+    -webkit-user-select: none;
     user-select: none;
 }
 .start-menu__stripe {
@@ -207,6 +211,7 @@ canvas#selections {
     flex-grow: 1;
     position: relative;
     user-select: none;
+    -webkit-user-select: none;
     z-index: 1;
 }
 
@@ -214,6 +219,7 @@ canvas#selections {
     height: 100%;
     padding: 10px;
 
+    position: absolute;
     display: grid;
     grid-template-rows: repeat(auto-fill, 78px);
     grid-template-columns: repeat(auto-fill, 64px);
@@ -277,6 +283,7 @@ canvas#selections {
     align-items: center;
 
     user-select: none;
+    -webkit-user-select: none;
 }
 
 .task-bar__divider {
@@ -377,13 +384,13 @@ canvas#selections {
 
 /* --- SHIMS ----*/
 
-.window > .title-bar { user-select: none; }
+.window > .title-bar { user-select: none; -webkit-user-select: none; }
 .window > .title-bar:active { cursor: move; }
 .window .title-bar-controls > button { cursor: pointer; }
 .window .title-bar-controls > button:active { padding: 0; }
 .window { position: relative; }
 .window[data-window] > .window-body {height: calc(100% - 36px);}
-.window[data-isresizing="true"] { user-select: none; }
+.window[data-isresizing="true"] { user-select: none; -webkit-user-select: none;}
 .window[data-wm_minimized="true"] { pointer-events: none; opacity: 0; }
 .window[data-wm_maximized="true"] {
     height: calc(100% - 36px) !important;
