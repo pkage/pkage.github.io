@@ -19,6 +19,13 @@ class WelcomeProgram extends Program {
                 e.preventDefault()
                 window.pm.createInstance('resume')
             })
+
+        this.getBodyHandle()
+            .querySelector('[data-upgrade="intro-launchportfolio"]')
+            .addEventListener('click', e => {
+                e.preventDefault()
+                window.pm.createInstance('portfolio')
+            })
     }
 }
 
