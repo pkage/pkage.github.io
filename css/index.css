@@ -150,6 +150,11 @@ hr.hr--accent {
     justify-content: flex-start;
 }
 
+.start-menu__menu a {
+    text-decoration: none;
+    color: black;
+}
+
 .start-menu__item {
     display: flex;
     flex-direction: row;

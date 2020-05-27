@@ -8,7 +8,10 @@ class StartMenuManager {
         this.bg.addEventListener('click', this.startMenuBackgroundClick.bind(this))
 
         this.menu.querySelectorAll('[data-launch]')
-            .forEach(el => this.attachClickHandler(el))
+            .forEach(el => this.attachLaunchClickHandler(el))
+
+        this.menu.querySelectorAll('a')
+            .forEach(el => this.attachLinkClickHandler(el))
     }
 
     openStartMenu() {
@@ -29,12 +32,16 @@ class StartMenuManager {
         
     }
     
-    attachClickHandler(el) {
+    attachLaunchClickHandler(el) {
         if (!el.dataset.launch) {return;}
         el.addEventListener('click', () => {
             this.closeStartMenu()
             window.pm.createInstance(el.dataset.launch)
         })
+    }
+
+    attachLinkClickHandler(el) {
+        el.addEventListener('click', () => this.closeStartMenu())
     }
 }
 
