@@ -187,24 +187,30 @@ hr.hr--accent {
     margin: 2px 2px;
 }
 
+
+.start-menu__item > .start-menu__submenu-container > .start-menu__submenu {
+    top: -8px;
+    left: 4px;
+}
 .start-menu__submenu-container {
     position: relative;
     width: 0;
-    height: 24px;
+    height: 16px;
 
     opacity: 0;
     pointer-events: none;
 
 }
-.start-menu__item:hover > .start-menu__submenu-container {
+.start-menu__item:hover > .start-menu__submenu-container,
+.start-menu__submenu-item:hover > .start-menu__submenu-container {
     opacity: 1;
     pointer-events: initial;
 }
 
 .start-menu__submenu {
     position: absolute;
-    top: -8px;
-    left: 6px;
+    top: -4px;
+    left: 0px;
     min-width: 130px;
     box-shadow: var(--inset);
     background-color: var(--gray);
@@ -222,7 +228,7 @@ hr.hr--accent {
 
     cursor: pointer;
 }
-.start-menu__submenu-item > img {
+.start-menu__submenu-item > .start-menu__submenu-icon {
     width: 16px;
     height: 16px;
     margin-right: 8px;
