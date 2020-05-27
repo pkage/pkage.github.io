@@ -82,6 +82,14 @@ class PortfolioProgram extends Program {
                         <a href="https://kage.dev/passcalc" target="_blank">Passcalc</a><br/>
                         A simple tool to help you figure out how much you need to pass at UoE.
                     </li>
+                    <li>
+                        <a href="https://github.com/pkage/snooski" target="_blank">Snooski</a><br/>
+                        A terminal-based Reddit client, with full article rendering.
+                    </li>
+                    <li>
+                        <a href="https://github.com/pkage/hackernewslc" target="_blank">Hacker News L+C</a><br/>
+                        An extension to add link+comment buttons to Hacker News.
+                    </li>
                 </ul>
 
                 <hr class="hr--accent2"/>
