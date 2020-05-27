@@ -22,6 +22,7 @@ class PromptProgram extends Program {
         })
         this.term.open(this.getBodyHandle())
         this.term.write('\nMicrosoft Windows 98\r\n    squeezed into a web page\r\n')
+        this.currentInput = ''
         this.writePrompt()
 
         this.getBodyHandle().addEventListener('keyup', this.onKey.bind(this))
@@ -30,17 +31,26 @@ class PromptProgram extends Program {
 
     writePrompt() {
         this.term.write('\r\nC:\\>')
-        this.currentInput = ''
     }
 
     exec() {
-        if (window.pm.hasPrototype(this.currentInput)) {
-            window.pm.createInstance(this.currentInput)
-        } else if (this.currentInput === 'exit') {
+        let cmd = this.currentInput.replace(/^\s+|\s+$/g, '') // remove trailing whitespace
+        if (window.pm.hasPrototype(cmd)) {
+            window.pm.createInstance(cmd)
+        } else if (cmd === '') {
+            // no-op
+        } else if (cmd === 'exit') {
             this.close()
+        } else if (cmd === 'cls') {
+            this.clearTerminal()
         } else {
-            this.term.writeln(`\r\n'${this.currentInput}' is not recognized as an internal or external command, operable program, or batch file.`)
+            this.term.writeln(`\r\n'${cmd}' is not recognized as an internal or external command, operable program, or batch file.`)
         }
+        this.currentInput = ''
+    }
+
+    clearTerminal() {
+        this.term.clear()
     }
 
     onKey(e) {
@@ -60,6 +70,8 @@ class PromptProgram extends Program {
             this.writePrompt()
         } else if (e.key === 'd' && e.ctrlKey) {
             this.close()
+        } else if (e.key === 'l' && e.ctrlKey) {
+            this.clearTerminal()
         } else if (printable) {
             this.term.write(e.key);
             this.currentInput += e.key
