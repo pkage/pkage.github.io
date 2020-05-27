@@ -90,6 +90,11 @@ class PortfolioProgram extends Program {
                         <a href="https://github.com/pkage/hackernewslc" target="_blank">Hacker News L+C</a><br/>
                         An extension to add link+comment buttons to Hacker News.
                     </li>
+                    <li>
+                        <a href="https://github.com/pkage/98" target="_blank">This Website</a><br/>
+                        A faux-desktop environment with the look of windows 98, built with vanilla Javascript.
+
+                    </li>
                 </ul>
 
                 <hr class="hr--accent2"/>
