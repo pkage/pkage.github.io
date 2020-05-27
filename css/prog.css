@@ -40,3 +40,8 @@
     pointer-events: none;
     position: absolute;
 }
+
+/* --- PROMPT --- */
+.window[data-name="Prompt"] > .window-body {
+    margin: 0;
+}
