@@ -37,6 +37,19 @@ class WindowManager {
         this.redrawTaskbarMain()
     }
 
+    /* --- HELPERS --- */
+
+    createID() {
+        // honestly this probably won't collide (16 ^ 10 = ~ 1 trilion)
+        // if you get a collision you should probably buy a lottery ticket
+        const alphabet = 'abcdef0123456789'
+        let str = ''
+        for (let i = 0; i < 10; i++) {
+            str += alphabet[Math.floor(Math.random() * alphabet.length)]
+        }
+        return str
+    }
+
     /* --- WINDOW MOVEMENT --- */
 
     // attach window movement controls
@@ -251,11 +264,11 @@ class WindowManager {
             if (winfo.active) {
                 btn.classList.add('task-bar__launch--active')
                 btn.addEventListener('click', () => {
-                    this.minimizeWindow(document.querySelector(`.window[data-name="${winfo.name}"]`))
+                    this.minimizeWindow(document.querySelector(`.window[data-_wm_id="${winfo._wm_id}"]`))
                 })
             } else {
                 btn.addEventListener('click', () => {
-                    this.windowFocus(document.querySelector(`.window[data-name="${winfo.name}"]`))
+                    this.windowFocus(document.querySelector(`.window[data-_wm_id="${winfo._wm_id}"]`))
                 })
             }
             return btn
@@ -267,6 +280,7 @@ class WindowManager {
             .forEach(w => wins.push({
                 name: w.dataset.name,
                 icon: w.dataset.icon,
+                _wm_id: w.dataset._wm_id,
                 active: (w.dataset.wm_order === '0' && w.dataset.wm_minimized !== 'true') // picks active
             }))
 
@@ -345,6 +359,11 @@ class WindowManager {
     openWindow({name, icon, title, resizable, x, y, width, height}, body, cb) {
         const winhost = document.querySelector('.window-host')
         const win = document.createElement('div')
+
+        // create ID and attach it
+        const wm_id = this.createID()
+        win.dataset._wm_id = wm_id
+
         if (name) win.dataset.name = name
         if (icon) win.dataset.icon = icon
         win.dataset.window = true
