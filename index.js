@@ -40,6 +40,8 @@ const saveWelcomePage = () => {
 }
 saveWelcomePage()
 
+const isMobileBrowser = () => (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1)
+
 /* shims for mobile */
 const recalculateHeight = () => {
     document.body.style.height = `${window.innerHeight}px`

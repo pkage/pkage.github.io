@@ -302,34 +302,47 @@ class WindowManager {
         const closeBtn = win.querySelector('button[aria-label="Close"]')
         const maximizeBtn = win.querySelector('button[aria-label="Maximize"]')
         const minimizeBtn = win.querySelector('button[aria-label="Minimize"]')
+
+        const closeWindow = () => {
+            if ('_pm_id' in win.dataset) {
+                window.pm.closeInstance(win.dataset._pm_id)
+            }
+            this.removeWindow(win)
+        }
+
+        const maximizeWindow = () => {
+            if (win.dataset.wm_maximized === 'true') {
+                let prevpos = win.dataset.wm_prev_pos.split(',')
+                win.dataset.wm_maximized = false
+                win.style.top  = prevpos[0]
+                win.style.left = prevpos[1]
+                maximizeBtn.setAttribute('aria-label', 'Maximize')
+            } else {
+                win.dataset.wm_prev_pos = `${win.style.top},${win.style.left}`
+                win.dataset.wm_maximized = true
+                maximizeBtn.setAttribute('aria-label', 'Restore')
+            }
+        }
+
         if (closeBtn) {
             closeBtn
-                .addEventListener('click', () => {
-                    if ('_pm_id' in win.dataset) {
-                        window.pm.closeInstance(win.dataset._pm_id)
-                    }
-                    this.removeWindow(win)
-                })
+                .addEventListener('click', closeWindow)
+            closeBtn
+                .addEventListener('touchup', closeWindow)
         }
         if (maximizeBtn) {
             maximizeBtn
-                .addEventListener('click', () => {
-                    if (win.dataset.wm_maximized === 'true') {
-                        let prevpos = win.dataset.wm_prev_pos.split(',')
-                        win.dataset.wm_maximized = false
-                        win.style.top  = prevpos[0]
-                        win.style.left = prevpos[1]
-                        maximizeBtn.setAttribute('aria-label', 'Maximize')
-                    } else {
-                        win.dataset.wm_prev_pos = `${win.style.top},${win.style.left}`
-                        win.dataset.wm_maximized = true
-                        maximizeBtn.setAttribute('aria-label', 'Restore')
-                    }
-                })
+                .addEventListener('click', maximizeWindow)
+            maximizeBtn
+                .addEventListener('touchup', maximizeWindow)
         }
         if (minimizeBtn) {
             minimizeBtn
                 .addEventListener('click', () => {
+                    this.minimizeWindow(win)
+                })
+            minimizeBtn
+                .addEventListener('touchup', () => {
                     this.minimizeWindow(win)
                 })
                 

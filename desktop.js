@@ -48,7 +48,11 @@ class DesktopManager {
 
             icon.dataset.active = true
         })
-        icon.addEventListener('dblclick', e => {
+        
+        // on mobile, fire this on a single click
+        let ev_target = (isMobileBrowser()) ? 'click' : 'dblclick'
+
+        icon.addEventListener(ev_target, e => {
             e.preventDefault()
             if ('launch' in icon.dataset) {
                 window.pm.createInstance(icon.dataset.launch)
