@@ -263,15 +263,19 @@ class WindowManager {
 
             // wire up classes
             btn.classList.add('task-bar__launch')
+            let target = document.querySelector(`.window[data-_wm_id="${winfo._wm_id}"]`)
             if (winfo.active) {
                 btn.classList.add('task-bar__launch--active')
-                btn.addEventListener('click', () => {
-                    this.minimizeWindow(document.querySelector(`.window[data-_wm_id="${winfo._wm_id}"]`))
-                })
+                btn.addEventListener('click', 
+                    () => this.minimizeWindow(target))
+                btn.addEventListener('touchend', 
+                    () => this.minimizeWindow(target))
             } else {
-                btn.addEventListener('click', () => {
-                    this.windowFocus(document.querySelector(`.window[data-_wm_id="${winfo._wm_id}"]`))
-                })
+                btn.addEventListener('click', () => 
+                    this.windowFocus(target))
+                btn.addEventListener('touchend', () => 
+                    this.windowFocus(target))
+
             }
             return btn
         }
