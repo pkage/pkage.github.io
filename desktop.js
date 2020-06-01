@@ -49,10 +49,9 @@ class DesktopManager {
             icon.dataset.active = true
         })
         
-        // on mobile, fire this on a single click
-        let ev_target = (isMobileBrowser()) ? 'click' : 'dblclick'
 
-        icon.addEventListener(ev_target, e => {
+
+        const openProgram = e => {
             e.preventDefault()
             if ('launch' in icon.dataset) {
                 window.pm.createInstance(icon.dataset.launch)
@@ -61,7 +60,14 @@ class DesktopManager {
                     <p>It doesn't work.</p>
                 `)
             }
-        })
+        }
+
+        icon.addEventListener('dblclick', openProgram)
+
+        if (isMobileBrowser()) {
+            // on mobile, fire this on a single click
+            icon.addEventListener('click', openProgram)
+        }
     }
 
     clearIconSelections() {

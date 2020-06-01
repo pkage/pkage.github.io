@@ -328,13 +328,13 @@ class WindowManager {
             closeBtn
                 .addEventListener('click', closeWindow)
             closeBtn
-                .addEventListener('touchup', closeWindow)
+                .addEventListener('touchend', closeWindow)
         }
         if (maximizeBtn) {
             maximizeBtn
                 .addEventListener('click', maximizeWindow)
             maximizeBtn
-                .addEventListener('touchup', maximizeWindow)
+                .addEventListener('touchend', maximizeWindow)
         }
         if (minimizeBtn) {
             minimizeBtn
@@ -342,7 +342,7 @@ class WindowManager {
                     this.minimizeWindow(win)
                 })
             minimizeBtn
-                .addEventListener('touchup', () => {
+                .addEventListener('touchend', () => {
                     this.minimizeWindow(win)
                 })
                 
