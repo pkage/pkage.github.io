@@ -56,7 +56,7 @@ class PortfolioProgram extends Program {
                     <li>
                         <b>MiRaTA microsatellite</b><br/>
                         Was invovled in ground station/flight software, ground station still in use at MIT Lincoln Labs. 
-                        MiRaTA launched in 2017 from Vandenburg Air Force Base.
+                        MiRaTA launched in 2017 from Vandenberg Air Force Base.
                     </li>
                 </ul>
             </div>
