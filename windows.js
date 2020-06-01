@@ -76,6 +76,7 @@ class WindowManager {
             const offsetY = e.clientY - winRect.y
 
             window.mm.updateMousePos(e)
+            this.windowFocus(win)
 
             // read the mouse position
             const updatePosition = () => {
@@ -125,6 +126,7 @@ class WindowManager {
             // assert this is aimed at us
             if (!assertParent(e.target, handle)) return
             win.dataset.isresizing = true
+            this.windowFocus(win)
 
             // get the current info about the window
             const winRect = win.getBoundingClientRect()
