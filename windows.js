@@ -464,8 +464,8 @@ class MouseManager {
         this.cleanup_events = []
 
         // this can stay permanently attached -- we care about all touches
-        document.body.addEventListener('touchmove', this.updateMousePos)
-        document.body.addEventListener('touchend', this.cleanup)
+        document.body.addEventListener('touchmove', this.updateMousePos.bind(this))
+        document.body.addEventListener('touchend', this.cleanup.bind(this))
     }
 
     addMouseupListener(fn) {
