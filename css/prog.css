@@ -42,6 +42,14 @@
 }
 
 /* --- PROMPT --- */
+
 .window[data-name="Prompt"] > .window-body {
     margin: 0;
+}
+
+/* --- PORTFOLIO --- */
+.window[data-name="Portfolio - Work"],
+.window[data-name="Portfolio - School"],
+.window[data-name="Portfolio - Personal"] {
+    max-width: 90vw;
 }

@@ -5,7 +5,7 @@ class PortfolioProgram extends Program {
             title: 'Portfolio - Work',
             icon:  'img/desktop/MyDocuments.png',
             y: 40,
-            x: 80
+            x: 20
         }
 
         let body = `
@@ -59,11 +59,6 @@ class PortfolioProgram extends Program {
                         MiRaTA launched in 2017 from Vandenburg Air Force Base.
                     </li>
                 </ul>
-
-                <hr class="hr--accent2"/>
-
-
-
             </div>
         `
 
@@ -76,7 +71,7 @@ class PortfolioProgram extends Program {
             title: 'Portfolio - School Related Projects',
             icon:  'img/desktop/MyDocuments.png',
             y: 60,
-            x: 100
+            x: 40
         }
 
         let body = `
@@ -131,7 +126,7 @@ class PortfolioProgram extends Program {
             title: 'Portfolio - Side Projects',
             icon:  'img/desktop/MyDocuments.png',
             y: 80,
-            x: 120
+            x: 60
         }
         
         let body = `
