@@ -1,24 +1,24 @@
 class PortfolioProgram extends Program {
     createWindow() {
         let wminfo = {
-            name: 'Portfolio',
-            title: 'Portfolio',
+            name: 'Portfolio - Work',
+            title: 'Portfolio - Work',
             icon:  'img/desktop/MyDocuments.png',
-            height: window.innerHeight - 150,
-            y: 100,
-            x: 100
+            y: 40,
+            x: 80
         }
 
         let body = `
             <div class="typography">
-                <h2> Portfolio </h2>
+                <h2> Portfolio / Work </h2>
                 <subtitle> Here's some projects I've worked on in the past.</subtitle>
                 
                 <hr class="hr--accent2"/>
 
-                <h4> Work </h4>
+                <p>
+                    <i> Note that some works here may be proprietary, so limited information may be released.</i>
+                <p>
 
-                <br/>
                 <b> NASA Jet Propulsion Laboratory </b> (<a href="https://jpl.nasa.gov/" target="_blank">web</a>)
 
                 <ul>
@@ -27,7 +27,7 @@ class PortfolioProgram extends Program {
                         <span class="text--highlighted">Currently working</span> on a first-pass data analytics framework for interactive analysis of terabyte-scale datasets with the JPL Machine Learning and Instrument Autonomy Group (MLIA).
                     </li>
                     <li>
-                        <a href="https://trs.jpl.nasa.gov/bitstream/handle/2014/47056/CL%2316-4217.pdf?sequence=1&isAllowed=y" target="_blank">Integrated Modeling Environment</a><br/>
+                        <a href="https://trs.jpl.nasa.gov/bitstream/handle/2014/47056/CL%2316-4217.pdf?sequence=1&isAllowed=y" target="_blank">Integrated Modeling Environment (IME)</a><br/>
                         Worked on propulsion system diagramming to model binding, and a general purpose plugin framework to support mission formulation (Team X/Ops Lab).
                     </li>
                 </ul>
@@ -62,45 +62,30 @@ class PortfolioProgram extends Program {
 
                 <hr class="hr--accent2"/>
 
-                <h4> Side Projects </h4>
-                <p> Various things I've created, in many languages. </p>
 
-                <ul>
-                    <li>
-                        <a href="https://github.com/pkage/depgraph" target="_blank">Depgraph</a><br/>
-                        A static analysis toolkit for Javascript, in use at NASA/JPL.
-                    </li>
-                    <li>
-                        <a href="https://github.com/pkage/wirepickle" target="_blank">Wirepickle</a><br/>
-                        A Python 0MQ-based IPC/RPC solution, also in use at NASA/JPL.
-                    </li>
-                    <li>
-                        <a href="https://github.com/pkage/adstrip" target="_blank">Adstrip</a><br/>
-                        Mute advertisements on-the-fly in a live news feed using computer vision.
-                    </li>
-                    <li>
-                        <a href="https://kage.dev/passcalc" target="_blank">Passcalc</a><br/>
-                        A simple tool to help you figure out how much you need to pass at UoE.
-                    </li>
-                    <li>
-                        <a href="https://github.com/pkage/snooski" target="_blank">Snooski</a><br/>
-                        A terminal-based Reddit client, with full article rendering.
-                    </li>
-                    <li>
-                        <a href="https://github.com/pkage/hackernewslc" target="_blank">Hacker News L+C</a><br/>
-                        An extension to add link+comment buttons to Hacker News.
-                    </li>
-                    <li>
-                        <a href="https://github.com/pkage/98" target="_blank">This Website</a><br/>
-                        A faux-desktop environment with the look of windows 98, built with vanilla Javascript.
 
-                    </li>
-                </ul>
+            </div>
+        `
 
+        return [wminfo, body]
+    }
+
+    createSchoolWindow() {
+        let wminfo = {
+            name: 'Portfolio - School',
+            title: 'Portfolio - School Related Projects',
+            icon:  'img/desktop/MyDocuments.png',
+            y: 60,
+            x: 100
+        }
+
+        let body = `
+            <div class="typography">
+                <h2> Portfolio / School </h2>
+                <subtitle> Here are some projects I've built while at university.</subtitle>
+                
                 <hr class="hr--accent2"/>
 
-
-                <h4> School </h4>
                 <br/>
                 <b> CompSoc </b> (<a href="https://comp-soc.com/" target="_blank">web</a>) <br/>
                 <p>
@@ -134,6 +119,63 @@ class PortfolioProgram extends Program {
                 
                     </li>
                 </ul>
+            </div>
+        `
+
+        return [wminfo, body]
+    }
+
+    createPersonalWindow() {
+        let wminfo = {
+            name: 'Portfolio - Personal',
+            title: 'Portfolio - Side Projects',
+            icon:  'img/desktop/MyDocuments.png',
+            y: 80,
+            x: 120
+        }
+        
+        let body = `
+            <div class="typography">
+                <h2> Portfolio / Personal </h2>
+                <subtitle> Various things I've created in my spare time, in many languages.</subtitle>
+                
+                <hr class="hr--accent2"/>
+
+                <ul>
+                    <li>
+                        <a href="https://github.com/pkage/depgraph" target="_blank">Depgraph</a><br/>
+                        A static analysis toolkit for Javascript, in use at NASA/JPL.
+                    </li>
+                    <li>
+                        <a href="https://github.com/pkage/wirepickle" target="_blank">Wirepickle</a><br/>
+                        A Python 0MQ-based IPC/RPC solution, also in use at NASA/JPL.
+                    </li>
+                    <li>
+                        <a href="https://github.com/pkage/adstrip" target="_blank">Adstrip</a><br/>
+                        Mute advertisements on-the-fly in a live news feed using computer vision, built with OpenCV and Python.
+                    </li>
+                    <li>
+                        <a href="https://github.com/pkage/albumview" target="_blank">Coverflow for Spotify</a><br/>
+                        A website that shows my listening history on Spotify, built with Nodejs and Vue.
+                    </li>
+                    <li>
+                        <a href="https://kage.dev/passcalc" target="_blank">Passcalc</a><br/>
+                        A simple tool to help you figure out how much you need to pass at UoE, built with vanilla JS.
+                    </li>
+                    <li>
+                        <a href="https://github.com/pkage/snooski" target="_blank">Snooski</a><br/>
+                        A terminal-based Reddit client with full article rendering, built with Python.
+                    </li>
+                    <li>
+                        <a href="https://github.com/pkage/hackernewslc" target="_blank">Hacker News L+C</a><br/>
+                        A browser extension to add link+comment buttons to Hacker News.
+                    </li>
+                    <li>
+                        <a href="https://github.com/pkage/98" target="_blank">This Website</a><br/>
+                        A faux-desktop environment with the look of windows 98, built with vanilla Javascript.
+
+                    </li>
+                </ul>
 
             </div>
         `
@@ -142,8 +184,8 @@ class PortfolioProgram extends Program {
     }
 
     onAttach() {
-        this.getBodyHandle()
-            .classList.add('window-body--overflow-y')
+        window.wm.openWindow(...this.createSchoolWindow())
+        window.wm.openWindow(...this.createPersonalWindow())
     }
 }
 
