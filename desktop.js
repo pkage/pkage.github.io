@@ -48,7 +48,8 @@ class DesktopManager {
 
             icon.dataset.active = true
         })
-        icon.addEventListener('dblclick', () => {
+        icon.addEventListener('dblclick', e => {
+            e.preventDefault()
             if ('launch' in icon.dataset) {
                 window.pm.createInstance(icon.dataset.launch)
             } else {
