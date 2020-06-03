@@ -263,18 +263,16 @@ class WindowManager {
 
             // wire up classes
             btn.classList.add('task-bar__launch')
+
+            let ev_target = isMobileBrowser() ? 'touchend' : 'click' // apparently mobile safari has problems with this.
             let target = document.querySelector(`.window[data-_wm_id="${winfo._wm_id}"]`)
             if (winfo.active) {
                 btn.classList.add('task-bar__launch--active')
-                btn.addEventListener('click', 
-                    () => this.minimizeWindow(target))
-                btn.addEventListener('touchend', 
+                btn.addEventListener(ev_target, 
                     () => this.minimizeWindow(target))
             } else {
-                btn.addEventListener('click', () => 
-                    this.windowFocus(target))
-                btn.addEventListener('touchend', () => 
-                    this.windowFocus(target))
+                btn.addEventListener(ev_target, 
+                    () => this.windowFocus(target))
 
             }
             return btn
@@ -375,7 +373,7 @@ class WindowManager {
 
     /* --- OPEN WINDOW --- */
 
-    openWindow({name, icon, title, resizable, x, y, width, height}, body, cb) {
+    openWindow({name, icon, title, resizable, x, y, width, height, margin, app}, body, cb) {
         const winhost = document.querySelector('.window-host')
         const win = document.createElement('div')
 
@@ -408,6 +406,17 @@ class WindowManager {
 
         controls = controls.join('\n')
 
+        // misc styling
+        if (margin === false) {
+            margin = 'window-body--nomargin'
+        } else {
+            margin = ''
+        }
+        if (app === true) {
+            app = 'window-body--app'
+        } else {
+            app = ''
+        }
 
 
         win.classList.add('window')
@@ -419,7 +428,9 @@ class WindowManager {
                     <button aria-label="Close"></button>
                 </div>
             </div>
-            <div class="window-body">${body}</div>
+            <div class="window-body ${margin} ${app}">
+                ${body}
+            </div>
             ${resize_handle}
         `
 
