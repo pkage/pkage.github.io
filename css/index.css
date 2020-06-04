@@ -443,8 +443,15 @@ canvas#selections {
     border: 1px dotted gray;
     color: white;
 }
-.desktop-icon[data-active="true"] > img {
+.desktop-icon[data-active="true"] img {
     filter: url(#blueselect);
+}
+
+.desktop-icon__shortcut {
+    position: absolute;
+    width: 32px;
+    transform: translate(-10px, -5px);
+    pointer-events: none;
 }
 
 /* --- TASKBAR --- */
