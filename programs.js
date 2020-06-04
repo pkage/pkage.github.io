@@ -113,6 +113,11 @@ class Program {
 
     onAttach() {}
     onClose() {}
+
+    closeWindow() {
+        // this is a hack...
+        this.handle.querySelector('button[aria-label="Close"]').click()
+    }
 }
 
 window.pm = new ProgramManager()
