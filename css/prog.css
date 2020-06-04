@@ -108,9 +108,8 @@
     padding: 8px;
     resize: none;
 
-    min-height: 100px;
-    min-width: 200px;
-
+    min-height: 200px;
+    min-width: 300px;
 }
 
 .window[data-name="Email"] .email__send {
