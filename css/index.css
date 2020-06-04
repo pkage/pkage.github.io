@@ -141,6 +141,9 @@ hr.hr--accent2 {
     margin: 2px;
 }
 
+.menu-bar__spacer {
+    flex-grow: 1;
+}
 .menu-bar__label {
     margin: 2px 4px;
 }
@@ -184,6 +187,10 @@ hr.hr--accent2 {
     height: 20px;
     width:  20px;
     margin: 2px;
+}
+
+.menu-bar__input {
+    flex-grow: 1;
 }
 /* --- DIALOGS --- */
 

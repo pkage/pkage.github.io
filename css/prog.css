@@ -99,3 +99,20 @@
     min-height: 100px;
     min-width: 200px;
 }
+
+/* --- EMAIL --- */
+
+.window[data-name="Email"] .email__body {
+    flex-grow: 1;
+    /*font-family: courier-new, courier, monospace;*/
+    padding: 8px;
+    resize: none;
+
+    min-height: 100px;
+    min-width: 200px;
+
+}
+
+.window[data-name="Email"] .email__send {
+    justify-self: flex-end;
+}
