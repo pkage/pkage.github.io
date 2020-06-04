@@ -40,7 +40,7 @@ class EmailProgram extends Program {
                     <span class="menu-bar__label" class="menu-bar__label">
                         CC:
                     </span>
-                    <input class="menu-bar__input" type="text" name="cc"/>
+                    <input class="menu-bar__input" type="email" name="cc"/>
                 </div>
                 <div class="menu-bar__hr"></div>
                 <div class="menu-bar__menu">
@@ -48,7 +48,7 @@ class EmailProgram extends Program {
                     <span class="menu-bar__label">
                         Subject:
                     </span>
-                    <input class="menu-bar__input" type="text" name="subject"/>
+                    <input class="menu-bar__input" type="text" name="subject" autocomplete="off"/>
                 </div>
             </div>
             <textarea class="email__body"></textarea>
