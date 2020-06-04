@@ -16,7 +16,7 @@ class PromptProgram extends Program {
     onAttach() {
         Terminal.applyAddon(fit)
         this.term = new Terminal({
-            cols: 60,
+            cols: (isMobileBrowser()) ? 30 : 60,
             height: 24,
             cursorStyle: 'underline'
         })
