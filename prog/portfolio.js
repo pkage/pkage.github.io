@@ -104,9 +104,8 @@ class PortfolioProgram extends Program {
                         Wrote the website for the 2020 iteration of Hack the Burgh.
                     </li>
                     <li>
-                        <a href="https://github.com/compsoc-edinburgh/" target="_blank">HtB 2020 Admissions</a><br/>
+                        <a href="https://github.com/compsoc-edinburgh/htb20-voter" target="_blank">HtB 2020 Admissions</a><br/>
                         Created a voting portal for admitting applications to HtB 2020.<br/>
-                        <i>May be private now.</i>
 
                     </li>
                     <li><a href="https://2019.hacktheburgh.com/" target="_blank">Hack the Burgh 2019</a><br/>
