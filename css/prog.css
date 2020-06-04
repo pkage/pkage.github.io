@@ -87,3 +87,15 @@
     padding: 5px;
 }
 
+
+/* --- NOTEPAD --- */
+
+.window[data-name="Notepad"] .notepad__textarea {
+    flex-grow: 1;
+    font-family: courier-new, courier, monospace;
+    padding: 8px;
+    resize: none;
+
+    min-height: 100px;
+    min-width: 200px;
+}
