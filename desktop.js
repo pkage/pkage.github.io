@@ -8,6 +8,7 @@ class DesktopManager {
         window.addEventListener('orientationchange', this.resizeSelectionCanvas.bind(this))
 
         this.desktop = document.querySelector('.desktop')
+        this.desktop_container = document.querySelector('.desktop-container')
 
         // attach icon behaviors
         this.desktop
@@ -28,15 +29,17 @@ class DesktopManager {
 
         // attach selection events
         window.mm.addMouseupListener(() => this.handleSelectionEnd())
-        this.desktop
-            .addEventListener('touchstart', this.handleSelectionStart.bind(this))
-        this.desktop
-            .addEventListener('mousedown',  this.handleSelectionStart.bind(this))
-
-        this.desktop
-            .addEventListener('mouseup', this.handleSelectionEnd.bind(this))
-        this.desktop
-            .addEventListener('touchend', this.handleSelectionEnd.bind(this))
+        if (isMobileBrowser()) {
+            this.desktop_container
+                .addEventListener('touchstart', this.handleSelectionStart.bind(this))
+            this.desktop_container
+                .addEventListener('touchend', this.handleSelectionEnd.bind(this))
+        } else {
+            this.desktop_container
+                .addEventListener('pointerdown',  this.handleSelectionStart.bind(this))
+            this.desktop_container
+                .addEventListener('pointerup', this.handleSelectionEnd.bind(this))
+        }
         
     }
 
