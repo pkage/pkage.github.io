@@ -36,7 +36,6 @@ class ExplorerProgram extends Program {
             icon.addEventListener('click', () => this.openProgram(launch))
         }
 
-        console.log(icon)
         return icon
     }
 
@@ -53,10 +52,6 @@ class ExplorerProgram extends Program {
 
     openProgram(launch) {
         window.pm.createInstance(launch)
-    }
-
-    onAttach() {
-        
     }
 
     createWindow() {
@@ -169,7 +164,6 @@ class ExplorerProgram extends Program {
 
         
         for (let icon of this.iconsToCreate()) {
-            console.log(icon)
             this.desktop
                 .appendChild(this.createIcon(icon))
         }
