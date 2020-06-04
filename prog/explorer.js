@@ -175,7 +175,7 @@ class ExplorerProgram extends Program {
 
 class MyDocumentsProgram extends ExplorerProgram {
     getWindowIcon() {
-        return 'img/desktop/MyComputer.png'
+        return 'img/desktop/MyDocuments.png'
     }
     getWindowTitle() {
         return 'My Documents'
