@@ -213,6 +213,12 @@ class MyDocumentsProgram extends ExplorerProgram {
                 launch: 'web:mailto:patrick@ka.ge'
             },
             {
+                img: 'img/desktop/MyBriefcase.png',
+                title: 'My Portfolio',
+                shortcut: true,
+                launch: 'portfolio'
+            },
+            {
                 img: 'img/desktop/SystemFile.png',
                 title: 'Welcome',
                 shortcut: true,

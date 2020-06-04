@@ -89,16 +89,16 @@
                     <img src="img/desktop/MyDocuments.png" alt="My Documents">
                     <span>My Documents</span>
                 </div>
+                <div class="desktop-icon" data-launch="portfolio">
+                    <img src="img/desktop/MyBriefcase.png" alt="My Briefcase">
+                    <span>My Portfolio</span>
+                </div>
                 <div class="desktop-icon" data-launch="resume">
                     <img src="img/desktop/TextFile.png" alt="Resume">
                     <div class="desktop-icon__shortcut">
                         <img src="img/ShortcutIcon.png">
                     </div>
                     <span>Resume.pdf</span>
-                </div>
-                <div class="desktop-icon" data-launch="doom">
-                    <img src="img/desktop/BatchFile.png" alt="Batch File">
-                    <span>DOOM.BAT</span>
                 </div>
                 <div class="desktop-icon" data-launch="email">
                     <img src="img/desktop/Email.png" alt="Outlook Express">
@@ -132,7 +132,7 @@
             
             <img src="img/taskbar/ShowDesktop.png" alt="Show Desktop" title="Show Desktop" class="task-bar__quick">
             <img src="img/taskbar/IESmall.png" alt="Internet Explorer" title="Lauch Internet Explorer Browser" class="task-bar__quick">
-            <img src="img/taskbar/OutlookExpress.png" alt="Outlook Express" title="Lauch Outlook Express" class="task-bar__quick">
+            <img src="img/taskbar/OutlookExpress.png" alt="Outlook Express" title="Lauch Outlook Express" class="task-bar__quick" data-launch="email">
 
             <div class="task-bar__divider"></div>
             <div class="task-bar__main" id="task-bar__main">
@@ -185,11 +185,6 @@
                         <img class="start-menu__icon" src="img/startmenu/Documents.png" alt="Documents">
                         <span class="start-menu__item-text">Documents</span>
                         <img src="img/startmenu/MenuIndicator.png" alt="Menu" class="start-menu__item-menu-indicator">
-                    </div>
-                    <div class="start-menu__item">
-                        <img class="start-menu__icon" src="img/startmenu/Favorites.png" alt="Favorites">
-                        <span class="start-menu__item-text">Favorites</span>
-                        <img src="img/startmenu/MenuIndicator.png" alt="Menu" class="start-menu__item-menu-indicator">
                         <div class="start-menu__submenu-container">
                             <div class="start-menu__submenu">
                                 <div class="start-menu__submenu-item">
@@ -232,11 +227,20 @@
                                     </div>
                                 </a>
                                 <div class="start-menu__submenu-item" data-launch="resume">
+                                    <img class="start-menu__submenu-icon" src="img/desktop/MyBriefcase.png" alt="My Briefcase">
+                                    <span>Portfolio</span>
+                                </div>
+                                <div class="start-menu__submenu-item" data-launch="resume">
                                     <img class="start-menu__submenu-icon" src="img/desktop/TextFile.png" alt="Text File">
                                     <span>Resume</span>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="start-menu__item">
+                        <img class="start-menu__icon" src="img/startmenu/Favorites.png" alt="Favorites">
+                        <span class="start-menu__item-text">Favorites</span>
+                        <img src="img/startmenu/MenuIndicator.png" alt="Menu" class="start-menu__item-menu-indicator">
                     </div>
                     <div class="start-menu__item">
                         <img class="start-menu__icon" src="img/startmenu/Programs.png" alt="Programs">
