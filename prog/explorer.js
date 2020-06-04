@@ -1,9 +1,20 @@
 class ExplorerProgram extends Program {
 
-    createIcon({img, title, launch}) {
+    createIcon({img, title, launch, shortcut}) {
         let icon = document.createElement('div')
+
+        if (shortcut === true) {
+            shortcut = `
+                <div class="desktop-icon__shortcut">
+                    <img src="img/ShortcutIcon.png"/>
+                </div>
+            `
+        } else {
+            shortcut = ''
+        }
         icon.innerHTML = `
             <img src="${img}" alt="${title}">
+            ${shortcut}
             <span>${title}</span>
         `
         icon.classList.add('desktop-icon')
@@ -17,6 +28,7 @@ class ExplorerProgram extends Program {
 
             icon.dataset.active = true
         })
+
 
         icon.addEventListener('dblclick', () => this.openProgram(launch))
 
@@ -185,26 +197,31 @@ class MyDocumentsProgram extends ExplorerProgram {
             {
                 img: 'img/desktop/InternetExplorer.png',
                 title: 'GitHub',
+                shortcut: true,
                 launch: 'web:https://github.com/pkage'
             },
             {
                 img: 'img/desktop/InternetExplorer.png',
                 title: 'LinkedIn',
+                shortcut: true,
                 launch: 'web:https://www.linkedin.com/in/patrick-kage-652ba8122/'
             },
             {
                 img: 'img/desktop/InternetExplorer.png',
                 title: 'Keybase',
+                shortcut: true,
                 launch: 'web:https://keybase.io/pkage'
             },
             {
                 img: 'img/desktop/Email.png',
                 title: 'Email',
+                shortcut: true,
                 launch: 'web:mailto:patrick@ka.ge'
             },
             {
                 img: 'img/desktop/SystemFile.png',
                 title: 'Welcome',
+                shortcut: true,
                 launch: 'welcome'
             }
         ]
@@ -224,6 +241,7 @@ class RecyclingBinProgram extends ExplorerProgram {
             {
                 img: 'img/desktop/InternetExplorer.png',
                 title: 'Twitter',
+                shortcut: true,
                 launch: 'web:https://twitter.com/patrick_kage'
             }
         ]
