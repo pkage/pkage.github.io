@@ -41,6 +41,8 @@ body {
     font-smooth: never;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    height: 100vh; /* should be overwritten by js, this is for noscript */
 }
 
 /* --- TYPOGRAPHY --- */
