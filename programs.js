@@ -28,6 +28,17 @@ class ProgramManager {
     }
 
     createInstance(name) {
+        // slight hack, but allow web: links to be opened in new tabs
+        if (name.length > 4 && name.slice(0,4) === 'web:') {
+            console.log('opening web link')
+            document.querySelector('#dummy')
+                .setAttribute('href', name.slice(4))
+
+            document.querySelector('#dummy').click()
+
+            return
+        }
+
         if (!this.hasPrototype(name)) {
             console.warn(`attempted to open unregistered program ${name}, ignoring...`)
             return
@@ -92,6 +103,12 @@ class Program {
             return null
         }
         return this.handle.querySelector('.window-body')
+    }
+
+    setWindowTitle(title) {
+        this.handle
+            .querySelector('.title-text')
+            .innerText = title
     }
 
     onAttach() {}
