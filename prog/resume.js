@@ -26,7 +26,7 @@ class ResumeProgram extends Program {
                         </p>
                     </div>
                     <div class="window__dialog-action">
-                        <button>No</button>
+                        <button class="resume__close">No</button>
                         <a href="//kage.dev/resume.pdf" target="_blank">
                             <button autofocus>Yes</button>
                         </a>
@@ -63,6 +63,10 @@ class ResumeProgram extends Program {
     onAttach() {
         if (!this.isMobileBrowser()) {
             this.getBodyHandle().style.margin = 0
+        } else {
+            this.getBodyHandle()
+                .querySelector('button.resume__close')
+                .addEventListener('click', this.closeWindow.bind(this))
         }
     }
 }
