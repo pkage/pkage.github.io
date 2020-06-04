@@ -115,3 +115,13 @@
 .window[data-name="Email"] .email__send {
     justify-self: flex-end;
 }
+
+/* --- RUN --- */
+
+.window[data-name="Run"] .run__runbar {
+    margin-bottom: 10px;
+}
+
+.window[data-name="Run"] .run__runbar > span {
+    margin: 0 10px 0 5px;
+}
