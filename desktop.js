@@ -40,6 +40,12 @@ class DesktopManager {
             this.desktop_container
                 .addEventListener('pointerup', this.handleSelectionEnd.bind(this))
         }
+
+        // taskbar quick
+        document.querySelectorAll('.task-bar__quick[data-launch]')
+            .forEach(el => {
+                el.addEventListener('click', () => window.pm.createInstance(el.dataset.launch))
+            })
         
     }
 
