@@ -433,9 +433,9 @@ canvas#selections {
 .desktop-icon > img {
     width: 32px;
     height: 32px;
-    margin-bottom: 5px;
 }
 .desktop-icon > span {
+    margin-top: 5px;
     border: 1px solid transparent;
 }
 .desktop-icon[data-active="true"] > span {
@@ -448,9 +448,8 @@ canvas#selections {
 }
 
 .desktop-icon__shortcut {
-    position: absolute;
-    width: 32px;
-    transform: translate(-10px, -5px);
+    height: 0;
+    transform: translate(-11px, -11px);
     pointer-events: none;
 }
 
