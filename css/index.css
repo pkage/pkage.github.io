@@ -117,11 +117,15 @@ hr.hr--accent2 {
 .menu-bar__item {
     margin: 0 2px;
     padding: 0 2px;
+    cursor: pointer;
+}
+
+.menu-bar__item:hover {
+    box-shadow: var(--icon-shadow);
 }
 
 .menu-bar__item:active {
-    background-color: navy;
-    color: white;
+    box-shadow: var(--icon-shadow__active);
 }
 
 .menu-bar__hr {
