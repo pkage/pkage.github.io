@@ -579,8 +579,8 @@ canvas#selections {
     position: absolute;
     right: 0px;
     bottom: 0px;
-    height: 8px;
-    width:  8px;
+    height: 16px;
+    width:  16px;
     cursor: nwse-resize;
     background-color: transparent;
 
