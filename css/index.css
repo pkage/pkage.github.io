@@ -179,13 +179,13 @@ hr.hr--accent2 {
     cursor: pointer;
 }
 
-.menu-bar__btn:hover {
+.menu-bar__btn:not(.menu-bar__btn--disabled):hover {
     box-shadow: var(--icon-shadow);
 }
-.menu-bar__btn:active {
+.menu-bar__btn:not(.menu-bar__btn--disabled):active {
     box-shadow: var(--icon-shadow__active);
 }
-.menu-bar__btn:active > * {
+.menu-bar__btn:not(.menu-bar__btn--disabled):active > * {
     transform: translate(1px, 1px);
 }
 
