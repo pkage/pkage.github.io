@@ -33,6 +33,14 @@ class PromptProgram extends Program {
         this.term.write('\r\nC:\\>')
     }
 
+    printAllCommands() {
+        this.term.write('\r\nAvaliable commands:\r\n    ')
+        let cmds = Object.keys(window.pm.prototypes).join(', ')
+        cmds += ', cls, exit, help, ?'
+        this.term.writeln(cmds)
+
+    }
+
     exec() {
         let cmd = this.currentInput.replace(/^\s+|\s+$/g, '') // remove trailing whitespace
         if (window.pm.hasPrototype(cmd)) {
@@ -43,6 +51,8 @@ class PromptProgram extends Program {
             this.close()
         } else if (cmd === 'cls') {
             this.clearTerminal()
+        } else if (cmd === 'help' || cmd === '?') {
+            this.printAllCommands()
         } else {
             this.term.writeln(`\r\n'${cmd}' is not recognized as an internal or external command, operable program, or batch file.`)
         }
