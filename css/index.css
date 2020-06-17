@@ -666,4 +666,11 @@ img {
     margin: 0 4px;
 }
 
-
+.window[data-_wm_id="initialwindow"] {
+    left: 50px;
+}
+@media (min-width: 768px) {
+    .window[data-_wm_id="initialwindow"] {
+        left: 110px;
+    }
+}

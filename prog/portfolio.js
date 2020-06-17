@@ -5,7 +5,7 @@ class PortfolioProgram extends Program {
             title: 'Portfolio - Work',
             icon:  'img/desktop/MyDocuments.png',
             y: 40,
-            x: 20
+            x: isMobileBrowser() ? 20 : 120
         }
 
         let body = `
@@ -71,7 +71,7 @@ class PortfolioProgram extends Program {
             title: 'Portfolio - School Related Projects',
             icon:  'img/desktop/MyDocuments.png',
             y: 60,
-            x: 40
+            x: isMobileBrowser() ? 40 : 160
         }
 
         let body = `
@@ -125,7 +125,7 @@ class PortfolioProgram extends Program {
             title: 'Portfolio - Side Projects',
             icon:  'img/desktop/MyDocuments.png',
             y: 80,
-            x: 60
+            x: isMobileBrowser() ? 60 : 200
         }
         
         let body = `
