@@ -243,6 +243,12 @@ class RecyclingBinProgram extends ExplorerProgram {
                 title: 'Twitter',
                 shortcut: true,
                 launch: 'web:https://twitter.com/patrick_kage'
+            },
+            {
+                img: 'img/desktop/WavFile.png',
+                title: 'roll.wav',
+                shortcut: true,
+                launch: 'web:https://www.youtube.com/watch?v=dQw4w9WgXcQ'
             }
         ]
     }
