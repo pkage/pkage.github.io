@@ -38,11 +38,23 @@ class PromptProgram extends Program {
         let cmds = Object.keys(window.pm.prototypes).join(', ')
         cmds += ', cls, exit, help, ?'
         this.term.writeln(cmds)
+    }
 
+    printDir() {
+        let cmds = Object.keys(window.pm.prototypes).join('.exe\r\n')
+        cmds = '\r\n' + cmds + '.exe\r\nhelp.exe'
+
+        this.term.writeln(cmds)
+        
     }
 
     exec() {
         let cmd = this.currentInput.replace(/^\s+|\s+$/g, '') // remove trailing whitespace
+
+        if (cmd.slice(-4) === '.exe') {
+            cmd = cmd.slice(0, -4)
+        }
+
         if (window.pm.hasPrototype(cmd)) {
             window.pm.createInstance(cmd)
         } else if (cmd === '') {
@@ -53,6 +65,8 @@ class PromptProgram extends Program {
             this.clearTerminal()
         } else if (cmd === 'help' || cmd === '?') {
             this.printAllCommands()
+        } else if (cmd === 'dir') {
+            this.printDir()
         } else {
             this.term.writeln(`\r\n'${cmd}' is not recognized as an internal or external command, operable program, or batch file.`)
         }
