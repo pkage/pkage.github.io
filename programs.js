@@ -55,7 +55,7 @@ class ProgramManager {
         // this feels real hacky
         const handle = this.instances[id] = new (this.prototypes[name])(id)
 
-        const [wminfo, body] = handle.createWindow()
+        const [wminfo, body] = handle.createWindow(arg)
 
         window.wm.openWindow(wminfo, body, win => {
             win.dataset._pm_id = id
