@@ -39,6 +39,13 @@ class ProgramManager {
             return
         }
 
+        // argument handling for general programs
+        let arg = null;
+        if (name.indexOf(':') !== -1) {
+            [name, arg] = name.split(/:(.+)/)
+        }
+        console.log('launching ', name, ' with arg ', arg)
+
         if (!this.hasPrototype(name)) {
             console.warn(`attempted to open unregistered program ${name}, ignoring...`)
             return
@@ -80,7 +87,7 @@ class Program {
         this._pm_id = id
     }
 
-    createWindow() {
+    createWindow(arg) {
         let body = `
             <p> Default window </p>
         `
