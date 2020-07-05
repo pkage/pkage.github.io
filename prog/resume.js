@@ -8,7 +8,7 @@ class ResumeProgram extends Program {
         let wminfo = {
             title: 'Resume Viewer',
             name:  'Resume Viewer',
-            icon:  'img/desktop/TextFile.png',
+            icon:  'img/desktop/WordPad.png',
             resizable: true
         }
         if (this.isMobileBrowser()) {

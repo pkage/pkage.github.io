@@ -184,7 +184,7 @@ class MyDocumentsProgram extends ExplorerProgram {
     iconsToCreate() {
         return [
             {
-                img: 'img/desktop/TextFile.png',
+                img: 'img/desktop/WordPad.png',
                 title: 'Resume.pdf',
                 launch: 'resume'
             },
