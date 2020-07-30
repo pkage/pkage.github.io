@@ -207,6 +207,12 @@ class MyDocumentsProgram extends ExplorerProgram {
                 launch: 'web:https://keybase.io/pkage'
             },
             {
+                img: 'img/desktop/InternetExplorer.png',
+                title: 'My Blog',
+                shortcut: true,
+                launch: 'web:https://ka.ge/blog/'
+            },
+            {
                 img: 'img/desktop/Email.png',
                 title: 'Email',
                 shortcut: true,
