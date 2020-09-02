@@ -6,6 +6,7 @@
  *             3+: windows
  *           999 : taskbar
  *          1010 : start menu
+ *          2010 : menu bar menus
  *
  *  The reason for the huge gap for windows is bc each window has its own
  *  z-index (to properly support window ordering)
@@ -118,13 +119,14 @@ hr.hr--accent2 {
     margin: 0 2px;
     padding: 0 2px;
     cursor: pointer;
+    position: relative;
 }
 
 .menu-bar__item:hover {
     box-shadow: var(--icon-shadow);
 }
 
-.menu-bar__item:active {
+.menu-bar__item:active, .menu-bar__item--active {
     box-shadow: var(--icon-shadow__active);
 }
 
@@ -198,6 +200,72 @@ hr.hr--accent2 {
 .menu-bar__input {
     flex-grow: 1;
 }
+
+.menu-bar__submenu.menu-bar__submenu--active {
+    opacity: 1;
+    pointer-events: initial;
+}
+
+.menu-bar__submenu {
+    cursor: initial;
+
+    padding: 2px 1px;
+    margin: 0;
+    list-style: none;
+    
+    z-index: 2011;
+
+    position: absolute;
+    top: 1rem;
+    left: 0px;
+
+    box-shadow: var(--inset);
+    background-color: var(--gray);
+    min-width: 100px;
+
+    opacity: 0;
+    pointer-events: none;
+}
+.menu-bar__item--active {
+    pointer-events: none;
+}
+
+.menu-bar__subitem {
+    padding: 1px 2px;
+    margin: 0 2px;
+    cursor: pointer;
+}
+
+.menu-bar__subitem:hover {
+    background-color: navy;
+    color: white;
+}
+
+.menu-bar__subitem--disabled {
+    cursor: initial;
+    pointer-events: none;
+    color: gray;
+    text-shadow: 1px 1px white;
+}
+
+.menu-bar__submenu-bg {
+    position: fixed;
+    z-index: 2010;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: transparent;
+
+    pointer-events: none;
+    opacity: 0;
+}
+
+.menu-bar__submenu-bg--active {
+    pointer-events: initial;
+    opacity: 1;
+}
+
 /* --- DIALOGS --- */
 
 .window__dialog {
@@ -596,9 +664,36 @@ canvas#selections {
     background: #85878A;
 }
 
-/* --- SHIMS ----*/
+/* --- UTILS --- */
+
+.layout__row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+.layout__column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.layout--justify-end {
+    justify-content: flex-end;
+}
+
 
 .util__flex-grow { flex-grow: 1; }
+.util__nomargin {
+    margin: 0;
+}
+.util__margin--horizontal {
+    margin: 0 1rem;
+}
+
+/* --- SHIMS ----*/
+
 .window > .title-bar { user-select: none; -webkit-user-select: none; }
 .window > .title-bar:active { cursor: move; }
 .window .title-bar-controls > button { cursor: pointer; }

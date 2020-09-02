@@ -68,6 +68,15 @@ class ProgramManager {
         })
     }
 
+    getInstance(id) {
+        if (!this.hasInstance(id)) {
+            console.warn(`attempted to get unknown instance ${id}, ignoring...`)
+            return
+        }
+
+        return this.instances[id]
+    }
+
     closeInstance(id) {
         if (!this.hasInstance(id)) {
             console.warn(`attempted to close unknown instance ${id}, ignoring...`)
@@ -101,6 +110,74 @@ class Program {
         return [wminfo, body]
     }
 
+    initializeMenuHandler() {
+        const menus = this
+            .getBodyHandle()
+            .querySelectorAll('.menu-bar__item')
+
+        // add function for closing stuff
+        const closeMenu = () => {
+            document.querySelectorAll('.menu-bar__submenu-bg')
+                .forEach(el => {
+                    el.classList.remove('menu-bar__submenu-bg--active')
+                })
+            document.querySelectorAll('.menu-bar__submenu')
+                .forEach(el => {
+                    el.classList.remove('menu-bar__submenu--active')
+                })
+            document.querySelectorAll('.menu-bar__item')
+                .forEach(el => el.classList.remove('menu-bar__item--active'))
+        }
+
+        let bg = this.getBodyHandle()
+            .parentElement
+            .querySelector('.menu-bar__submenu-bg')
+
+        if (bg === null) {
+            // create the click catcher bg
+            bg = document.createElement('div')
+            bg.classList.add('menu-bar__submenu-bg')
+
+            bg.addEventListener('click', () => {
+                closeMenu()
+            })
+
+            // put the background down
+            this
+                .getBodyHandle()
+                .parentElement
+                .appendChild(bg)
+        }
+
+
+        for (let menu of menus) {
+            let submenu = menu.querySelector('.menu-bar__submenu')
+            if (submenu !== null) {
+                menu.addEventListener('click', e => {
+
+                    if (e.target !== menu) {return}
+
+                    bg.classList.add('menu-bar__submenu-bg--active')
+                    menu.classList.add('menu-bar__item--active')
+                    submenu.classList.add('menu-bar__submenu--active')
+                })
+
+                // add event listeners for item clicking
+                submenu
+                    .querySelectorAll('[data-name]')
+                    .forEach(el => {
+                        el.addEventListener('click', e => {
+                            this.handleMenuClick(e.target.dataset.name)
+
+                            closeMenu()
+                        })
+                    })
+            }
+        }
+    }
+
+    handleMenuClick(name) {}
+
     setWindowHandle(win) {
         this.handle = win
     }
@@ -120,6 +197,9 @@ class Program {
 
     onAttach() {}
     onClose() {}
+
+    onResize() {}
+    onResizeEnd() {}
 
     closeWindow() {
         // this is a hack...

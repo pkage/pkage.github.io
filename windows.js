@@ -114,6 +114,7 @@ class WindowManager {
         if (handle === null) return
         win.dataset.isresizing = false
 
+
         let rect = win.getBoundingClientRect()
         win.style.minWidth  = `${rect.width - 4}px`
         win.style.minHeight = `${rect.height - 4}px`
@@ -127,6 +128,10 @@ class WindowManager {
             if (!assertParent(e.target, handle)) return
             win.dataset.isresizing = true
             this.windowFocus(win)
+
+            // find the PM instance
+            const pm_instance = window.pm.hasInstance(win.dataset._pm_id) ? window.pm.getInstance(win.dataset._pm_id) : undefined
+            console.log('attaching window resizing to window')
 
             // get the current info about the window
             const winRect = win.getBoundingClientRect()
@@ -145,8 +150,12 @@ class WindowManager {
                 win.style.width  = `${winW}px`
                 win.style.height = `${winH}px`
 
+                pm_instance?.onResize?.()
+
                 if (win.dataset.isresizing === 'true') {
                     requestAnimationFrame(updateSize)
+                } else {
+                    pm_instance?.onResizeEnd()
                 }
             }
             updateSize()
