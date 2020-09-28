@@ -26,6 +26,13 @@ class WelcomeProgram extends Program {
                 e.preventDefault()
                 window.pm.createInstance('portfolio')
             })
+
+        this.getBodyHandle()
+            .querySelector('[data-upgrade="intro-launchemail"]')
+            .addEventListener('click', e => {
+                e.preventDefault()
+                window.pm.createInstance('email')
+            })
     }
 }
 
