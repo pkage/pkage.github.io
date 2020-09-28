@@ -71,6 +71,8 @@ class NotepadProgram extends Program {
         let doc = ''
         if (argument == 'PGP_Key.txt') {
             doc = PGP_PUBLIC_KEY
+            winfo.width = 450
+            winfo.height = 300
         }
 
         let body = `
