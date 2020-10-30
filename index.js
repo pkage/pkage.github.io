@@ -55,3 +55,8 @@ const recalculateHeight = () => {
 window.addEventListener('load', recalculateHeight)
 window.addEventListener('resize', recalculateHeight)
 window.addEventListener('orientationchange', recalculateHeight)
+
+// redirect if you hit the old domain
+if (location.href = 'https://kage.dev') {
+    location.href = 'https://ka.ge'
+}
