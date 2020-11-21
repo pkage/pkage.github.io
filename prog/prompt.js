@@ -107,4 +107,4 @@ class PromptProgram extends Program {
     }
 }
 
-window.pm.registerPrototype('prompt', PromptProgram)
+window.pm.registerPrototype('cmd', PromptProgram)
