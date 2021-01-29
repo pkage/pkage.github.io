@@ -3,7 +3,8 @@ class PromptProgram extends Program {
         let wminfo = {
             name: 'Prompt',
             title: 'MS-DOS Prompt',
-            icon: 'img/desktop/MSDOS.png'
+            icon: 'img/desktop/MSDOS.png',
+            resizable: true
         }
 
         let body = `
@@ -13,7 +14,12 @@ class PromptProgram extends Program {
         return [wminfo, body]
     }
 
+    onResize() {
+        this.term.fit()
+    }
+
     onAttach() {
+        this.getBodyHandle().parentElement.style.backgroundColor = 'black'
         Terminal.applyAddon(fit)
         this.term = new Terminal({
             cols: (isMobileBrowser()) ? 30 : 60,
