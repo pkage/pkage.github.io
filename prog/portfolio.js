@@ -100,6 +100,17 @@ class PortfolioProgram extends Program {
                 </p>
                 <ul>
                     <li>
+                        <a href="https://2021.hacktheburgh.com/" target="_blank">Hack the Burgh 2021</a><br/>
+                        Managed all technical aspects of the 2021 iteration of
+                        Hack the Burgh, including moving the hackathon entirely
+                        online.
+                    </li>
+                    <li>
+                        <a href="https://github.com/compsoc-edinburgh/htb20-voter" target="_blank">HtB 2020 Admissions</a><br/>
+                        Created a voting portal for admitting applications to HtB 2020.<br/>
+
+                    </li>
+                    <li>
                         <a href="https://2020.hacktheburgh.com/" target="_blank">Hack the Burgh 2020</a><br/>
                         Wrote the website for the 2020 iteration of Hack the Burgh.
                     </li>
