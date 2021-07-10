@@ -27,7 +27,7 @@ class ProgramManager {
         return (id in this.instances)
     }
 
-    createInstance(name) {
+    async createInstance(name) {
         // slight hack, but allow web: links to be opened in new tabs
         if (name.length > 4 && name.slice(0,4) === 'web:') {
             console.log('opening web link')
@@ -55,7 +55,7 @@ class ProgramManager {
         // this feels real hacky
         const handle = this.instances[id] = new (this.prototypes[name])(id)
 
-        const [wminfo, body] = handle.createWindow(arg)
+        const [wminfo, body] = await handle.createWindow(arg)
 
         window.wm.openWindow(wminfo, body, win => {
             win.dataset._pm_id = id
@@ -96,7 +96,7 @@ class Program {
         this._pm_id = id
     }
 
-    createWindow(arg) {
+    async createWindow(arg) {
         let body = `
             <p> Default window </p>
         `
@@ -191,8 +191,17 @@ class Program {
 
     setWindowTitle(title) {
         this.handle
-            .querySelector('.title-text')
+            .querySelector('.title-bar-text')
             .innerText = title
+    }
+
+    setWindowIcon(icon) {
+        this.handle.dataset.icon = icon
+        window.wm.redrawTaskbarMain()
+    }
+    setWindowName(name) {
+        this.handle.dataset.name = name
+        window.wm.redrawTaskbarMain()
     }
 
     onAttach() {}

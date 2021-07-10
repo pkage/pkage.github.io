@@ -333,6 +333,10 @@ class WindowManager {
                 win.dataset.wm_maximized = true
                 maximizeBtn.setAttribute('aria-label', 'Restore')
             }
+            if ('_pm_id' in win.dataset) {
+                window.pm.instances[win.dataset._pm_id].onResize()
+                window.pm.instances[win.dataset._pm_id].onResizeEnd()
+            }
         }
 
         if (closeBtn) {
@@ -377,6 +381,11 @@ class WindowManager {
                 }
             }
             this.redrawTaskbarMain()
+        }
+
+        if ('_pm_id' in win.dataset) {
+            window.pm.instances[win.dataset._pm_id].onResize()
+            window.pm.instances[win.dataset._pm_id].onResizeEnd()
         }
     }
 

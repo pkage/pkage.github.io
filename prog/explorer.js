@@ -41,23 +41,69 @@ class ExplorerProgram extends Program {
 
     // abstract
     iconsToCreate() {
-        return []
+        if (this.folder === null) {
+            return []
+        }
+
+        let subfolders = []
+        for (let key of Object.keys(this.folder.children)) {
+            subfolders.push({
+                img: this.folder.children[key].getIcon(),
+                title: this.folder.children[key].getName(),
+                launch: `explorer:${this.folder.children[key].calculatePath().join('/')}`,
+                shortcut: false
+            })
+        }
+        return [
+            ...subfolders,
+            ...this.folder.getContents()
+        ]
     }
+
     getWindowTitle() {
-        return 'Explorer'
+        if (this.folder === null) {
+            return 'Explorer'
+        }
+
+        return this.folder.getName()
     }
     getWindowIcon() {
-        return 'img/desktop/Folder.png'
+        if (this.folder === null) {
+            return 'img/desktop/Folder.png'
+        }
+
+        return this.folder.getIcon()
     }
 
     openProgram(launch) {
-        window.pm.createInstance(launch)
+        if (launch.indexOf('explorer:') === 0) {
+            this.openPath(launch.split(':').slice(1).join(':'))
+        } else {
+            window.pm.createInstance(launch)
+        }
     }
 
-    createWindow() {
+    async createWindow(argument) {
+        this.folder = null
+        if (argument !== null) {
+            this.folder = await fs.get(argument)
+        } else {
+            this.folder = window.fs.root
+        }
+
+        let path = [this.getWindowTitle()]
+        if (this.folder !== null) {
+            path = this.folder.calculatePath()
+        }
+
+        path = path
+            .reverse()
+            .map((name, i) => `<option value="${path.slice(i).reverse().join('/')}" ${i === 0 ? 'selected' : ''}>${name}</option>`)
+            .join('\n')
+
         let wminfo = {
             name: this.getWindowTitle(),
-            title: this.getWindowTitle(),
+            title: `${this.getWindowTitle()} - Explorer`,
             icon: this.getWindowIcon(),
             resizable: true,
             margin: false,
@@ -100,7 +146,7 @@ class ExplorerProgram extends Program {
                         <img src="img/explorer/Forward.png"/>
                         <span>Forward</span>
                     </div>
-                    <div class="menu-bar__btn">
+                    <div class="menu-bar__btn" data-role="up">
                         <img src="img/explorer/Up.png"/>
                         <span>Up</span>
                     </div>
@@ -126,9 +172,7 @@ class ExplorerProgram extends Program {
                     <div class="menu-bar__handle"></div>
                     <span class="menu-bar__label"> Address </span>
                     <select class="menu-bar__dropdown">
-                        <option selected>
-                            ${this.getWindowTitle()}
-                        </option>
+                        ${path}
                     </select>
                 </div>
             </div>
@@ -144,6 +188,13 @@ class ExplorerProgram extends Program {
     }
 
     onAttach() {
+        const parent = this.getBodyHandle().parentElement
+        if (parent.style.width === '') {
+            parent.style.width = '306px'
+            parent.style.height = '324px'
+        }
+        // this.getBodyHandle().parentElement.style.width = '306px'
+        // this.getBodyHandle().parentElement.style.height = '324px'
         this.desktop = this.getBodyHandle()
             .querySelector('.explorer__desktop')
 
@@ -162,106 +213,31 @@ class ExplorerProgram extends Program {
                     .forEach(el => el.dataset.active = false)
             })
 
-        
+
+        this.getBodyHandle()
+            .querySelector('[data-role="up"]')
+            .addEventListener('click', () => {
+                if (this.folder === null) return
+                this.openPath(this.folder.calculatePath().slice(0, -1).join('/'))
+            })
+
+        this.getBodyHandle()
+            .querySelector('.menu-bar__dropdown')
+            .addEventListener('change', e => this.openPath(e.target.value))
+
         for (let icon of this.iconsToCreate()) {
             this.desktop
                 .appendChild(this.createIcon(icon))
         }
     }
-}
 
-
-/* --- SUBCLASSES --- */
-
-class MyDocumentsProgram extends ExplorerProgram {
-    getWindowIcon() {
-        return 'img/desktop/MyDocuments.png'
-    }
-    getWindowTitle() {
-        return 'My Documents'
-    }
-
-    iconsToCreate() {
-        return [
-            {
-                img: 'img/desktop/WordPad.png',
-                title: 'Resume.pdf',
-                launch: 'resume'
-            },
-            {
-                img: 'img/desktop/InternetExplorer.png',
-                title: 'GitHub',
-                shortcut: true,
-                launch: 'web:https://github.com/pkage'
-            },
-            {
-                img: 'img/desktop/InternetExplorer.png',
-                title: 'LinkedIn',
-                shortcut: true,
-                launch: 'web:https://www.linkedin.com/in/patrick-kage-652ba8122/'
-            },
-            {
-                img: 'img/desktop/InternetExplorer.png',
-                title: 'Keybase',
-                shortcut: true,
-                launch: 'web:https://keybase.io/pkage'
-            },
-            {
-                img: 'img/desktop/InternetExplorer.png',
-                title: 'My Blog',
-                shortcut: true,
-                launch: 'web:https://ka.ge/blog/'
-            },
-            {
-                img: 'img/desktop/Email.png',
-                title: 'Email',
-                shortcut: true,
-                launch: 'web:mailto:patrick@ka.ge'
-            },
-            {
-                img: 'img/desktop/MyBriefcase.png',
-                title: 'My Portfolio',
-                shortcut: true,
-                launch: 'portfolio'
-            },
-            {
-                img: 'img/desktop/SystemFile.png',
-                title: 'Welcome',
-                shortcut: true,
-                launch: 'welcome'
-            }
-        ]
+    async openPath(pathstr) {
+        const [winfo, body] = await this.createWindow(pathstr)
+        this.getBodyHandle().innerHTML = body
+        this.setWindowIcon(winfo.icon)
+        this.setWindowTitle(winfo.title)
+        this.onAttach()
     }
 }
-
-class RecyclingBinProgram extends ExplorerProgram {
-    getWindowIcon() {
-        return 'img/desktop/RecyclingBin.png'
-    }
-    getWindowTitle() {
-        return 'Recycling Bin'
-    }
-
-    iconsToCreate() {
-        return [
-            {
-                img: 'img/desktop/InternetExplorer.png',
-                title: 'Twitter',
-                shortcut: true,
-                launch: 'web:https://twitter.com/patrick_kage'
-            },
-            {
-                img: 'img/desktop/WavFile.png',
-                title: 'roll.wav',
-                shortcut: true,
-                launch: 'web:https://www.youtube.com/watch?v=dQw4w9WgXcQ'
-            }
-        ]
-    }
-}
-
 
 window.pm.registerPrototype('explorer', ExplorerProgram)
-window.pm.registerPrototype('mydocuments', MyDocumentsProgram)
-window.pm.registerPrototype('recyclingbin', RecyclingBinProgram)
-
