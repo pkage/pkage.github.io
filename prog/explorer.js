@@ -47,7 +47,6 @@ class ExplorerProgram extends Program {
 
         let subfolders = []
         for (let key of Object.keys(this.folder.children)) {
-            console.log(key)
             subfolders.push({
                 img: this.folder.children[key].getIcon(),
                 title: this.folder.children[key].getName(),
@@ -99,7 +98,7 @@ class ExplorerProgram extends Program {
 
         path = path
             .reverse()
-            .map((name, i) => `<option value="${path.slice(i).join('/')}" ${i === 0 ? 'selected' : ''}>${name}</option>`)
+            .map((name, i) => `<option value="${path.slice(i).reverse().join('/')}" ${i === 0 ? 'selected' : ''}>${name}</option>`)
             .join('\n')
 
         let wminfo = {
@@ -189,6 +188,13 @@ class ExplorerProgram extends Program {
     }
 
     onAttach() {
+        const parent = this.getBodyHandle().parentElement
+        if (parent.style.width === '') {
+            parent.style.width = '306px'
+            parent.style.height = '324px'
+        }
+        // this.getBodyHandle().parentElement.style.width = '306px'
+        // this.getBodyHandle().parentElement.style.height = '324px'
         this.desktop = this.getBodyHandle()
             .querySelector('.explorer__desktop')
 
