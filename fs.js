@@ -125,7 +125,8 @@ class Filesystem {
                 // ... hydrate them
                 folder.data.contents = info._files.map( name => ({
                     img: get_thumb(name),
-                    title: name
+                    title: name,
+                    launch: 'dialog:Error|Disk Error|Disk read error!<br/>Please insert the Windows 98 installation floppy to continue.|ARI'
                 }))
             }
 

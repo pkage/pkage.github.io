@@ -26,10 +26,21 @@ class DialogProgram extends Program {
 
 
         let winfo = {
-            title
+            title,
+            width: 300
         }
 
+        let buttongroup;
 
+        if (action === 'ARI') {
+            buttongroup = `
+                <button autofocus>Abort</button>
+                <button>Retry</button>
+                <button>Ignore</button>
+            `
+        } else {
+            buttongroup = `<button autofocus>${action}</button>`
+        }
 
         let body = `
             <div class="window__dialog">
@@ -40,7 +51,7 @@ class DialogProgram extends Program {
                     </p>
                 </div>
                 <div class="window__dialog-action">
-                    <button autofocus>${action}</button>
+                    ${buttongroup}
                 </div>
             </div>
         `
@@ -50,8 +61,10 @@ class DialogProgram extends Program {
 
     onAttach() {
         this.getBodyHandle()
-            .querySelector('button')
-            .addEventListener('click', this.closeWindow.bind(this))
+            .querySelectorAll('button')
+            .forEach(el => el
+                .addEventListener('click', this.closeWindow.bind(this))
+            )
     }
 }
 
