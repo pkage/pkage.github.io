@@ -65,6 +65,9 @@ class DialogProgram extends Program {
             .forEach(el => el
                 .addEventListener('click', this.closeWindow.bind(this))
             )
+
+        this.getBodyHandle()
+            .querySelectorAll('button')[0].focus()
     }
 }
 
