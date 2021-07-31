@@ -39,6 +39,10 @@ class ProgramManager {
             return
         }
 
+        if (name === 'nop') {
+            return
+        }
+
         // argument handling for general programs
         let arg = null;
         if (name.indexOf(':') !== -1) {

@@ -246,6 +246,28 @@ window.fs.addChild(new Folder({
     ]
 }))
 
+window.fs.addChild(new Folder({
+    name: 'Network Neighborhood',
+    icon: 'img/desktop/NetworkNeighborhood.png',
+    contents: [
+        {
+            img: 'img/desktop/NetDrive.png',
+            title: 'Host Computer',
+            launch: `dialog:img/dialog/Attention.png|Just kidding.|Just kidding.<br>But that'd be pretty cool though, right?|Yeah.`
+        },
+        {
+            img: 'img/desktop/Web Folders.png',
+            title: 'Web Folders',
+            launch: 'nop'
+        },
+        {
+            img: 'img/desktop/Entire Internet.png',
+            title: 'Entire Internet',
+            launch: 'nop'
+        }
+    ]
+}))
+
 window.fs.root.children['My Documents'].addChild(new Folder({
     name: 'My Papers',
     icon: 'img/desktop/Favorites.png',
@@ -264,5 +286,6 @@ window.fs.root.children['My Documents'].addChild(new Folder({
         }
     ]
 }))
+
 
 window.fs.loadFilesystem()
