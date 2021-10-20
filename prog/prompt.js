@@ -47,15 +47,41 @@ class PromptProgram extends Program {
     }
 
     printDir() {
-        let cmds = Object.keys(window.pm.prototypes).join('.exe\r\n')
-        cmds = '\r\n' + cmds + '.exe\r\nhelp.exe'
+        this.term.writeln(`\r
+ Volume in drive C is KAGE-DOS\r
+ Volume Serial Number is 8BAD-F00D\r
+ Directory of C:\\\r
+`)
+        // .\t<DIR>\t\t08-25-1998\t11:17p\r\n
+        // ..\t<DIR>\t\t08-25-1998\t11:17p\r\n
+        let get_byte_size = () => 100 + Math.floor(Math.random() * 156)
+        let cmds = Object.keys(window.pm.prototypes)
+        cmds.push('help')
+        cmds.push('exit')
 
-        this.term.writeln(cmds)
+        const maxlen = Math.max(...cmds.map(c => c.length))
+        const rpad = (s, len) => {
+            return s + (new Array(len - s.length).fill(' ').join(''))
+        }
+        const lpad = (s, len) => {
+            return (new Array(len - s.length).fill(' ').join('')) + s
+        }
         
+
+        let cmds_txt = cmds
+            .map(c => `${rpad(c, maxlen)}  EXE          ${get_byte_size()}  08-25-1998  11:17p\r\n`)
+            .join('')
+
+        this.term.writeln(`${rpad('.', maxlen)}        <DIR>  000  08-25-1998  11:17p`)
+        this.term.writeln(`${rpad('..', maxlen)}        <DIR>  000  08-25-1998  11:17p`)
+        this.term.write(cmds_txt)
+        
+        this.term.writeln(`          ${cmds.length} file(s)      ?? bytes`)
+        this.term.writeln(`                         ??? bytes free`)
     }
 
     exec() {
-        let cmd = this.currentInput.replace(/^\s+|\s+$/g, '') // remove trailing whitespace
+        let cmd = this.currentInput.replace( /^\s+|\s+$/g, '') // remove trailing whitespace
 
         if (cmd.slice(-4) === '.exe') {
             cmd = cmd.slice(0, -4)
