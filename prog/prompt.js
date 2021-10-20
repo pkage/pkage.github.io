@@ -72,8 +72,8 @@ class PromptProgram extends Program {
             .map(c => `${rpad(c, maxlen)}  EXE          ${get_byte_size()}  08-25-1998  11:17p\r\n`)
             .join('')
 
-        this.term.writeln(`${rpad('.', maxlen)}        <DIR>  000  08-25-1998  11:17p`)
-        this.term.writeln(`${rpad('..', maxlen)}        <DIR>  000  08-25-1998  11:17p`)
+        this.term.writeln(`${rpad('.', maxlen)}        <DIR>       08-25-1998  11:17p`)
+        this.term.writeln(`${rpad('..', maxlen)}        <DIR>       08-25-1998  11:17p`)
         this.term.write(cmds_txt)
         
         this.term.writeln(`          ${cmds.length} file(s)      ?? bytes`)
