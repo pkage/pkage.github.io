@@ -24,8 +24,8 @@ class DoomProgram extends Program {
             }
         }
 
-        const bundle_url = `https://doszone-uploads.s3.dualstack.eu-central-1.amazonaws.com/original/2X/8/80ba33210cab4177158dde6f2ec9704de56c7dfc.jsdos`
-        const src = `//dos.zone/en/player/${encodeURIComponent(bundle_url)}`;
+        const bundle_url = `dos/doom.jsdos`
+        const src = `//em.ka.ge/player?img=${encodeURIComponent(bundle_url)}`;
         body = `
             <iframe
                 style="width: calc(100% - 4px); height: 100%"
