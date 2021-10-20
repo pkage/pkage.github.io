@@ -9,7 +9,7 @@ class DoomProgram extends Program {
             title: 'DOOM.EXE',
             name:  'Doom',
             icon:  'img/desktop/MSDOS.png',
-            resizable: true
+            resizable: true,
             width: 480,
             height: 360,
             x: 75,
@@ -32,9 +32,6 @@ class DoomProgram extends Program {
                 src="${src}">
             </iframe>
         `
-
-
-        console.log(wminfo)
 
         return [wminfo, body]
     }
