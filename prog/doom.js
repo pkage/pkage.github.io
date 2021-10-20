@@ -11,7 +11,7 @@ class DoomProgram extends Program {
             icon:  'img/desktop/MSDOS.png',
             resizable: true
         }
-        if (this.isMobileBrowser()) {
+        if (this.isMobileBrowser() && false) {
             body = `
                 <div class="window__dialog">
                     <div class="window__dialog-info">
