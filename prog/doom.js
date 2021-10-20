@@ -17,7 +17,7 @@ class DoomProgram extends Program {
                     <div class="window__dialog-info">
                         <img src="img/dialog/Error.png"/>
                         <p>
-                            There's literally no way this will work on your phone.
+                            There's literally no way this will work on your phone. Try on a laptop?
                         </p>
                     </div>
                     <div class="window__dialog-action">
