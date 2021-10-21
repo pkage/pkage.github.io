@@ -1,4 +1,3 @@
 # Landing site
 
-Development happens over at [pkage/98](https://github.com/pkage/98), and is pushed here by a `publish` target.
-
+thanks to [98.css](https://jdan.github.io/98.css/) for the inspiration and for providing the button and window title styles!
