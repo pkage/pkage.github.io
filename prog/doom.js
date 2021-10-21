@@ -44,6 +44,9 @@ class DoomProgram extends Program {
                 .querySelector('button.doom__close')
                 .addEventListener('click', this.closeWindow.bind(this))
         }
+        this.getBodyHandle()
+            .querySelector('iframe')
+            .focus()
     }
 }
 
