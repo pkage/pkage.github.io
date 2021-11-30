@@ -3,7 +3,7 @@ class DoomProgram extends Program {
         return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
     }
 
-    createWindow() {
+    createWindow(argument) {
         let body   = ''
         let wminfo = {
             title: 'DOOM.EXE',
@@ -24,7 +24,8 @@ class DoomProgram extends Program {
             }
         }
 
-        const bundle_url = `dos/doom.jsdos`
+        const bundle_name = argument ?? 'doom'
+        const bundle_url = `dos/${bundle_name}.jsdos`
         const src = `//em.ka.ge/player?img=${encodeURIComponent(bundle_url)}`;
         body = `
             <iframe
