@@ -87,7 +87,9 @@ class PromptProgram extends Program {
             cmd = cmd.slice(0, -4)
         }
 
-        if (window.pm.hasPrototype(cmd)) {
+        let prog_name = cmd.split(':')[0]
+
+        if (window.pm.hasPrototype(prog_name)) {
             window.pm.createInstance(cmd)
         } else if (cmd === '') {
             // no-op
