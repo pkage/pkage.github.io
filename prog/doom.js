@@ -4,10 +4,12 @@ class DoomProgram extends Program {
     }
 
     createWindow(argument) {
+        const bundle_name = argument ?? 'doom'
+
         let body   = ''
         let wminfo = {
-            title: 'DOOM.EXE',
-            name:  'Doom',
+            title: `${bundle_name.toUpperCase()}.EXE`,
+            name:  bundle_name[0].toUpperCase() + bundle_name.slice(1),
             icon:  'img/desktop/MSDOS.png',
             resizable: true,
             width: 480,
@@ -24,7 +26,6 @@ class DoomProgram extends Program {
             }
         }
 
-        const bundle_name = argument ?? 'doom'
         const bundle_url = `dos/${bundle_name}.jsdos`
         const src = `//em.ka.ge/player?img=${encodeURIComponent(bundle_url)}`;
         body = `
