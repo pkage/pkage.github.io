@@ -3,11 +3,13 @@ class DoomProgram extends Program {
         return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
     }
 
-    createWindow() {
+    createWindow(argument) {
+        const bundle_name = argument ?? 'doom'
+
         let body   = ''
         let wminfo = {
-            title: 'DOOM.EXE',
-            name:  'Doom',
+            title: `${bundle_name.toUpperCase()}.EXE`,
+            name:  bundle_name[0].toUpperCase() + bundle_name.slice(1),
             icon:  'img/desktop/MSDOS.png',
             resizable: true,
             width: 480,
@@ -24,7 +26,7 @@ class DoomProgram extends Program {
             }
         }
 
-        const bundle_url = `dos/doom.jsdos`
+        const bundle_url = `dos/${bundle_name}.jsdos`
         const src = `//em.ka.ge/player?img=${encodeURIComponent(bundle_url)}`;
         body = `
             <iframe
