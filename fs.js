@@ -287,5 +287,24 @@ window.fs.root.children['My Documents'].addChild(new Folder({
     ]
 }))
 
+window.fs.root.children['My Documents'].addChild(new Folder({
+    name: 'My Talks',
+    icon: 'img/desktop/Favorites.png',
+    contents: [
+        {
+            img: 'img/desktop/Mplayer.png',
+            title: 'KRHCAI: Class Introspection',
+            shortcut: true,
+            launch: 'web:https://www.youtube.com/watch?v=i2gULufLnf8'
+        },
+        {
+            img: 'img/desktop/Mplayer.png',
+            title: 'HACKCON: Discord For Hackathons',
+            shortcut: true,
+            launch: 'web:https://www.youtube.com/watch?v=9bSudnnyQ5w'
+        }
+    ]
+}))
+
 
 window.fs.loadFilesystem()
