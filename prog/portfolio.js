@@ -109,7 +109,11 @@ class PortfolioProgram extends Program {
                 <p>
                     <a href="https://arxiv.org/abs/2107.01657" target="_blank">Read the full paper on arXiv</a>. This is an
                     adaptation for publication of my honours project paper, which can be found
-                    <a href="https://misc.ka.ge/honours.pdf" target="_blank">here</a>.
+                    <a href="https://misc.ka.ge/honours.pdf" target="_blank">here</a>. Watch me talk about it at the
+                    Knowledge Representation for Hybrid and Compositional
+                    Artificial Intelligence workshop <a href="https://www.youtube.com/watch?v=i2gULufLnf8">here</a> (at KR 2021: 18th
+                    International Conference on Principles of Knowledge
+                    Representation and Reasoning).
                 </p>
 
                 <br/>
