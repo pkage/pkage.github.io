@@ -204,7 +204,7 @@ window.fs.addChild(new Folder({
             img: 'img/desktop/Email.png',
             title: 'Email',
             shortcut: true,
-            launch: 'web:mailto:patrick@ka.ge'
+            launch: 'email'
         },
         {
             img: 'img/desktop/MyBriefcase.png',
