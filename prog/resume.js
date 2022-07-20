@@ -3,18 +3,26 @@ class ResumeProgram extends Program {
         return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
     }
 
+    getDocumentURL() {
+        return '//kage.dev/resume.pdf'
+    }
+
+    getDocumentTitle() {
+        return 'Resume'
+    }
+
     createWindow() {
         let body   = ''
         let wminfo = {
-            title: 'Resume Viewer',
-            name:  'Resume Viewer',
+            title: `Document Viewer - ${this.getDocumentTitle()}`,
+            name:  `Document Viewer (${this.getDocumentTitle()})`,
             icon:  'img/desktop/WordPad.png',
             resizable: true
         }
         if (this.isMobileBrowser()) {
             body = `
                 <iframe
-                    src="//kage.dev/resume.pdf"
+                    src="${this.getDocumentURL()}"
                     class="resume__iframe--mobile"
                     width="0"
                     height="0"> </iframe>
@@ -22,12 +30,12 @@ class ResumeProgram extends Program {
                     <div class="window__dialog-info">
                         <img src="img/desktop/TextFile.png"/>
                         <p>
-                            Open resume in new tab?
+                            Open ${this.getDocumentTitle().toLowerCase()} in new tab?
                         </p>
                     </div>
                     <div class="window__dialog-action">
                         <button class="resume__close">No</button>
-                        <a href="//kage.dev/resume.pdf" target="_blank">
+                        <a href="${this.getDocumentURL()}" target="_blank">
                             <button autofocus>Yes</button>
                         </a>
                     </div>
@@ -39,10 +47,10 @@ class ResumeProgram extends Program {
             }
         } else {
             body = `
-                <iframe src="//kage.dev/resume.pdf"> </iframe>
+                <iframe src="${this.getDocumentURL()}"> </iframe>
                 <div class="resume__toolbar">
-                    <a href="//kage.dev/resume.pdf" rel="noopener" target="_blank"> Open in New Tab </a>
-                    <a href="//kage.dev/resume.pdf" download> Download </a>
+                    <a href="${this.getDocumentURL()}" rel="noopener" target="_blank"> Open in New Tab </a>
+                    <a href="${this.getDocumentURL()}" download> Download </a>
                 </div>
             `
             wminfo = {
@@ -71,4 +79,16 @@ class ResumeProgram extends Program {
     }
 }
 
+class CVProgram extends ResumeProgram {
+    getDocumentURL() {
+        return '//kage.dev/cv.pdf'
+    }
+
+    getDocumentTitle() {
+        return 'CV'
+    }
+
+}
+
 window.pm.registerPrototype('resume', ResumeProgram)
+window.pm.registerPrototype('cv', CVProgram)
