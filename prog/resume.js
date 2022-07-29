@@ -47,7 +47,7 @@ class ResumeProgram extends Program {
             }
         } else {
             body = `
-                <iframe src="${this.getDocumentURL()}"> </iframe>
+                <iframe class="resume__iframe" src="${this.getDocumentURL()}"> </iframe>
                 <div class="resume__toolbar">
                     <a href="${this.getDocumentURL()}" rel="noopener" target="_blank"> Open in New Tab </a>
                     <a href="${this.getDocumentURL()}" download> Download </a>
@@ -69,6 +69,7 @@ class ResumeProgram extends Program {
     }
 
     onAttach() {
+        this.getBodyHandle().classList.add('window__resume')
         if (!this.isMobileBrowser()) {
             this.getBodyHandle().style.margin = 0
         } else {

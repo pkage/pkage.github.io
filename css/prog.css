@@ -1,14 +1,15 @@
 /* --- RESUME --- */
-.window[data-name="Resume Viewer"] > .window-body {
+.window__resume {
     display: flex;
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
 
     height: calc(100% - 20px);
+    margin-bottom: -16px;
 }
 
-.window[data-name="Resume Viewer"] iframe {
+.resume__iframe {
     flex-grow: 1;
 }
 /* fix iframe eating events when wm events are occurring/not focused */
@@ -18,7 +19,7 @@
     pointer-events: none;
 }
 
-.window[data-name="Resume Viewer"] .resume__toolbar {
+.window__resume .resume__toolbar {
     display: flex;
     flex-direction: row-reverse;
     align-items: baseline;
@@ -28,12 +29,12 @@
     padding: 2px;
 }
 
-.window[data-name="Resume Viewer"] .resume__toolbar > a {
+.window__resume .resume__toolbar > a {
     margin-left: 1rem;
 }
 
 
-.window[data-name="Resume Viewer"] iframe.resume__iframe--mobile {
+.window__resume iframe.resume__iframe--mobile {
     height: 0;
     width: 0;
     opacity: 0;
