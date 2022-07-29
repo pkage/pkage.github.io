@@ -23,6 +23,12 @@ const upgradeWelcomeResume = () => {
         window.pm.createInstance('resume')
     })
 
+    link = document.querySelector('[data-upgrade="intro-launchcv"]')
+    link.addEventListener('click', e => {
+        e.preventDefault()
+        window.pm.createInstance('cv')
+    })
+
     link = document.querySelector('[data-upgrade="intro-launchportfolio"]')
     link.addEventListener('click', e => {
         e.preventDefault()

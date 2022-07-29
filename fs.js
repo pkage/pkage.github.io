@@ -177,6 +177,11 @@ window.fs.addChild(new Folder({
             launch: 'resume'
         },
         {
+            img: 'img/desktop/WordPad.png',
+            title: 'CV.pdf',
+            launch: 'cv'
+        },
+        {
             img: 'img/desktop/InternetExplorer.png',
             title: 'GitHub',
             shortcut: true,
