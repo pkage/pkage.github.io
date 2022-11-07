@@ -245,7 +245,7 @@ class PortfolioProgram extends Program {
                         A browser extension to add link+comment buttons to Hacker News.
                     </li>
                     <li>
-                        <a href="https://github.com/pkage/pkage/github.io" target="_blank">This Website</a><br/>
+                        <a href="https://github.com/pkage/pkage.github.io" target="_blank">This Website</a><br/>
                         A faux-desktop environment with the look of windows 98, built with vanilla Javascript.
 
                     </li>
