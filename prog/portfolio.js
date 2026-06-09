@@ -19,12 +19,22 @@ class PortfolioProgram extends Program {
                     <i> Note that some works here may be proprietary, so limited information may be released.</i>
                 <p>
 
+                <b> SpaceRake </b> (<a href="https://spacerake.net/" target="_blank">web</a>)
+
+                <ul>
+                    <li>
+                        <span class="text--highlighted">Currently working</span> on laser communcations hardware for spacecraft, aircraft, and terrestrial stations.
+                    </li>
+                    <li> Working on machine vision, networking, and low-level systems programming. </li>
+                </ul>
+
+                <br/>
                 <b> NASA Jet Propulsion Laboratory </b> (<a href="https://jpl.nasa.gov/" target="_blank">web</a>)
 
                 <ul>
                     <li>
                         <a href="https://ml.jpl.nasa.gov/products/codex/codex.html" target="_blank">Complex Data Explorer (CODEX)</a><br/>
-                        <span class="text--highlighted">Currently working</span> on a first-pass data analytics framework for interactive analysis of terabyte-scale datasets with the JPL Machine Learning and Instrument Autonomy Group (MLIA).
+                        Worked on a first-pass data analytics framework for interactive analysis of terabyte-scale datasets with the JPL Machine Learning and Instrument Autonomy Group (MLIA).
                     </li>
                     <li>
                         <a href="https://trs.jpl.nasa.gov/bitstream/handle/2014/47056/CL%2316-4217.pdf?sequence=1&isAllowed=y" target="_blank">Integrated Modeling Environment (IME)</a><br/>
@@ -70,8 +80,8 @@ class PortfolioProgram extends Program {
             name: 'Portfolio - Research',
             title: 'Portfolio - Research Projects',
             icon:  'img/desktop/MyDocuments.png',
-            y: 80,
-            x: isMobileBrowser() ? 60 : 200
+            y: 100,
+            x: isMobileBrowser() ? 80 : 240
         }
 
         let body = `
@@ -82,7 +92,74 @@ class PortfolioProgram extends Program {
                 <hr class="hr--accent2"/>
 
                 <br/>
-                <b> Class Introspection: A Novel Technique for Detecting Unlabeled Subclasses by Leveraging Classifier Explainability Methods </b><br/><span>Patrick Kage, Dr. Pavlos Andreadis (2021)</span>
+                <b> Implicit Data Synthesis for Contrastive Unsupervised Data Augmentation </b><br/><span>Patrick Kage, Trevor Hedges, N. Siddharth, Pavlos Andreadis (2026, <a href="https://arxiv.org/abs/2606.07498" target="_blank">arXiv</a>).</span>
+                <p>
+                <details>
+                    <summary>Abstract</summary>
+                    <div class="typography--normaltext">
+                        Scientific observations generate large quantities of unlabeled data which is
+                        laborious to hand-label, making unsupervised learning techniques valuable for
+                        processing datasets. Among these approaches, contrastive learning provides a
+                        convenient mechanism for extracting structural representations from unannotated
+                        datasets. For natural imagery, the general approach is to use a variety of
+                        data-space augmentation methods in order to generate synthetic samples;
+                        however, for scientific observations data-space perturbations can fundamentally
+                        alter the underlying data. Our proposed method is to generate contrastive
+                        samples by perturbing the network weights rather than the underlying data, thus
+                        more closely preserving the structure of the data. We demonstrate this
+                        technique using a SimCLR-based pipeline applied over radar observations of
+                        meteors, and show performance gains under matched protocols.
+                    </div>
+                </details>
+                </p>
+
+                <br/>
+                <b> A Review of Pseudo-Labeling for Computer Vision</b><br/><span>Patrick Kage, Jay C. Rothenberger, Pavlos Andreadis, Dimitrios I. Diochnos (2026, <a href="https://jair.org/index.php/jair/article/view/19656" target="_blank">JAIR</a>).</span>
+                <p>
+                <details>
+                    <summary>Abstract</summary>
+                    <div class="typography--normaltext">
+                        Deep neural models have achieved state-of-the-art performance on a wide range
+                        of problems in computer science, especially in computer vision. However, deep
+                        neural networks often require large datasets of labeled samples to generalize
+                        effectively. An important area of active research is semi-supervised learning,
+                        which attempts to instead utilize large quantities of (easily acquired)
+                        unlabeled samples. One family of methods in this space is pseudo-labeling, a
+                        class of algorithms that use model outputs to assign labels to unlabeled
+                        samples which are then used as labeled samples during training. Such assigned
+                        labels, called pseudo-labels, are most commonly associated with the field of
+                        semi-supervised learning. In this work, we explore a broader interpretation of
+                        pseudo-labels within both self-supervised and unsupervised methods. After a
+                        thorough treatment of pseudo-labeling in these areas, we draw the connection
+                        between them and identify commonalities between fields, as well as new
+                        directions where advancements in one area would likely benefit others, such as
+                        curriculum learning and self-supervised regularization.
+                    </div>
+                </details>
+                </p>
+
+                <br/>
+                <b> Multi-modal, multi-scale representation learning for satellite imagery analysis just needs a good ALiBi </b><br/><span>Patrick Kage, Pavlos Andreadis (2024, <a href="https://arxiv.org/abs/2604.10347" target="_blank">arXiv</a>).</span>
+                <p>
+                <details>
+                    <summary>Abstract</summary>
+                    <div class="typography--normaltext">
+                        Vision foundation models have been shown to be effective at processing
+                        satellite imagery into representations fit for downstream tasks, however,
+                        creating models which operate over multiple spatial resolutions and modes is
+                        challenging. This paper presents Scale-ALiBi, a linear bias transformer
+                        attention mechanism with a spatial encoding bias to relationships between image
+                        patches at different ground sample distance scales. We provide an
+                        implementation of Scale-ALiBi over a dataset of aligned high- and
+                        low-resolution optical and low-resolution SAR satellite imagery data using a
+                        triple-contrastive and reconstructive architecture, show an improvement on the
+                        GEO-Bench benchmark, and release the newly curated dataset publicly.
+                    </div>
+                </details>
+                </p>
+
+                <br/>
+                <b> Class Introspection: A Novel Technique for Detecting Unlabeled Subclasses by Leveraging Classifier Explainability Methods </b><br/><span>Patrick Kage, Pavlos Andreadis (2021, <a href="https://arxiv.org/abs/2107.01657" target="_blank">arXiv</a>)</span>
                 <p>
                 <details>
                     <summary>Abstract</summary>
@@ -107,13 +184,13 @@ class PortfolioProgram extends Program {
                 </details>
                 </p>
                 <p>
-                    <a href="https://arxiv.org/abs/2107.01657" target="_blank">Read the full paper on arXiv</a>. This is an
-                    adaptation for publication of my honours project paper, which can be found
-                    <a href="https://misc.ka.ge/honours.pdf" target="_blank">here</a>. Watch me talk about it at the
-                    Knowledge Representation for Hybrid and Compositional
-                    Artificial Intelligence workshop <a href="https://www.youtube.com/watch?v=i2gULufLnf8">here</a> (at KR 2021: 18th
-                    International Conference on Principles of Knowledge
-                    Representation and Reasoning).
+                    This is an adaptation for publication of my honours project
+                    paper, which can be found <a href="https://misc.ka.ge/honours.pdf"
+                    target="_blank">here</a>. Watch me talk about it at the Knowledge
+                    Representation for Hybrid and Compositional Artificial Intelligence workshop <a
+                    href="https://www.youtube.com/watch?v=i2gULufLnf8">here</a> (at KR 2021: 18th
+                    International Conference on Principles of Knowledge Representation and
+                    Reasoning).
                 </p>
 
                 <br/>
@@ -122,10 +199,8 @@ class PortfolioProgram extends Program {
                     Research topics I am interested in pursuing:
                 </p>
                 <ul>
-                    <li>AI Explainability</li>
-                    <li>AI Active Learning</li>
-                    <li>Deep Learning</li>
-                    <li>Latent Structure Detection</li>
+                    <li>Unsupervised learning</li>
+                    <li>Semi-/weakly supervised learning</li>
                     <li>Human Computer Interaction</li>
                     <li>Computer Vision</li>
                 </ul>
@@ -204,8 +279,8 @@ class PortfolioProgram extends Program {
             name: 'Portfolio - Personal',
             title: 'Portfolio - Side Projects',
             icon:  'img/desktop/MyDocuments.png',
-            y: 100,
-            x: isMobileBrowser() ? 80 : 240
+            y: 80,
+            x: isMobileBrowser() ? 60 : 200
         }
         
         let body = `
@@ -259,8 +334,8 @@ class PortfolioProgram extends Program {
 
     onAttach() {
         window.wm.openWindow(...this.createSchoolWindow())
-        window.wm.openWindow(...this.createResearchWindow())
         window.wm.openWindow(...this.createPersonalWindow())
+        window.wm.openWindow(...this.createResearchWindow())
     }
 }
 

@@ -279,6 +279,24 @@ window.fs.root.children['My Documents'].addChild(new Folder({
     contents: [
         {
             img: 'img/special/ArXivFile.png',
+            title: 'Contrastive IDS',
+            shortcut: true,
+            launch: 'web:https://arxiv.org/abs/2606.07498'
+        },
+        {
+            img: 'img/special/ArXivFile.png',
+            title: 'PL Review',
+            shortcut: true,
+            launch: 'web:https://arxiv.org/abs/2408.07221'
+        },
+        {
+            img: 'img/special/ArXivFile.png',
+            title: 'Scale-ALiBi',
+            shortcut: true,
+            launch: 'web:https://arxiv.org/abs/2604.10347'
+        },
+        {
+            img: 'img/special/ArXivFile.png',
             title: 'Class Introspection...',
             shortcut: true,
             launch: 'web:https://arxiv.org/abs/2107.01657'
